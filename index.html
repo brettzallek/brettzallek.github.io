@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[YOUR NAME] — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*:focus{outline:none}
+*:focus-visible{outline:none;box-shadow:none}
+:root{--ink:#111827;--paper:#f9fafb;--accent:#2563eb;--accent2:#1e3a5f;--mid:#6b7280;--card-bg:#fff;--border:rgba(0,0,0,0.1)}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;cursor:none}
+.cursor{width:12px;height:12px;background:var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;box-shadow:0 0 0 1.5px rgba(255,255,255,0.6)}
+.cursor.expand{width:40px;height:40px;background:var(--accent);opacity:.7;box-shadow:0 0 0 2px rgba(255,255,255,0.5)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:transparent;transition:background .3s}
+nav.scrolled{background:rgba(245,242,236,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--ink);font-size:.85rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;position:relative;cursor:pointer}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:var(--accent);transition:width .3s}
+.nav-links a:hover::after{width:[#]}
+.nav-back{font-size:.85rem;font-weight:500;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:.4rem;border-bottom:1.5px solid transparent;transition:border-color .2s,color .2s;cursor:pointer}
+.nav-back:hover{color:var(--accent);border-color:var(--accent)}
+
+/* HOME PAGE */
+#page-home #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 2.5rem 4rem;position:relative;overflow:hidden;background:var(--paper)}
+.hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-size:clamp(60px,10vw,140px);font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.07);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em}
+.hero-photo{position:absolute;top:60px;right:0;width:42%;height:calc([#] - 60px);object-fit:cover;object-position:top center;mix-blend-mode:multiply}
+.hero-photo-overlay{position:absolute;top:60px;right:0;width:42%;height:calc([#] - 60px);background:linear-gradient(to bottom,var(--paper) 0%,transparent 18%,transparent 50%,var(--paper) [#]),linear-gradient(to right,var(--paper) 0%,transparent 20%),linear-gradient(to left,var(--paper) 0%,transparent 30%)}
+.hero-eyebrow{font-size:.8rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;opacity:0;transform:translateY(20px);animation:fadeUp .8s .2s forwards}
+.hero-headline{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;max-width:60%;position:relative;z-index:2;opacity:0;transform:translateY(30px);animation:fadeUp .8s .4s forwards}
+.hero-headline em{font-style:italic;font-weight:300;color:var(--accent);font-family:'DM Sans',sans-serif}
+.hero-sub{margin-top:2rem;font-size:1.05rem;line-height:1.65;max-width:50%;color:#444;position:relative;z-index:2;opacity:0;transform:translateY(30px);animation:fadeUp .8s .6s forwards}
+.hero-ctas{margin-top:2.5rem;display:flex;gap:1rem;align-items:center;position:relative;z-index:2;opacity:0;transform:translateY(30px);animation:fadeUp .8s .8s forwards}
+.btn-primary{background:var(--ink);color:var(--paper);padding:.9rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:.03em;text-decoration:none !important;border-radius:100px;transition:background .2s,transform .2s;cursor:pointer;border:none;display:inline-block;outline:none}
+.btn-primary:hover,.btn-primary:visited,.btn-primary:active,.btn-primary:focus{text-decoration:none !important;outline:none}
+.btn-primary:hover{background:var(--accent);transform:translateY(-2px)}
+.btn-ghost{font-size:.9rem;font-weight:500;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:.4rem;border-bottom:1.5px solid var(--ink);padding-bottom:2px;transition:color .2s,border-color .2s;cursor:pointer}
+.btn-ghost:hover{color:var(--accent);border-color:var(--accent)}
+.hero-stats-row{position:absolute;bottom:4rem;right:2.5rem;display:flex;gap:2.5rem;z-index:3;opacity:0;animation:fadeUp .8s 1s forwards}
+.hero-stat{text-align:center}
+.hero-stat-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;line-height:1;color:var(--accent)}
+.hero-stat-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:#888;margin-top:2px}
+.scroll-hint{position:absolute;bottom:2rem;left:2.5rem;transform:none;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fadeUp .8s 1.2s forwards}
+.scroll-hint span{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:#999}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,#999,transparent);animation:scrollPulse 1.5s infinite}
+.marquee-wrap{background:var(--accent);padding:1rem 0;overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-flex;animation:marquee 20s linear infinite}
+.marquee-inner span{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;padding:0 2rem}
+.marquee-dot{opacity:.5}
+section{padding:6rem 2.5rem}
+.section-label{font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+.section-label::before{content:'';display:block;width:30px;height:1.5px;background:var(--accent)}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:800;line-height:1.05;letter-spacing:-.025em;margin-bottom:1.5rem}
+#about{background:var(--ink);color:var(--paper)}
+#about .section-label{color:#2563eb}
+#about .section-label::before{background:#2563eb}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:4rem}
+.about-body{font-size:1.15rem;line-height:1.75;color:rgba(245,242,236,.8)}
+.about-body p+p{margin-top:1.25rem}
+.about-body strong{color:var(--paper);font-weight:500}
+.about-photos{display:flex;flex-direction:column;gap:1rem}
+.about-photos img{width:[#];border-radius:8px;object-fit:cover;display:block;filter:grayscale(20%);transition:filter .3s;max-height:480px}
+.about-photos img:hover{filter:none}
+.about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.5rem}
+.tag{padding:.4rem 1rem;border:1px solid rgba(245,242,236,.2);border-radius:100px;font-size:.8rem;color:rgba(245,242,236,.7)}
+#impact{background:var(--paper)}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5px;background:var(--border);margin-top:3rem;border:1.5px solid var(--border);border-radius:12px;overflow:hidden}
+.metric-cell{background:var(--paper);padding:2rem 1.5rem;transition:background .2s}
+.metric-cell:hover{background:var(--ink)}
+.metric-cell:hover .metric-num{color:var(--accent)}
+.metric-cell:hover .metric-label{color:rgba(245,242,236,.7)}
+.metric-num{font-family:'Syne',sans-serif;font-size:clamp(.9rem,2vw,2.2rem);font-weight:800;line-height:1;color:var(--ink);transition:color .2s;white-space:nowrap}
+.metric-label{font-size:.8rem;line-height:1.4;color:#666;margin-top:.5rem;transition:color .2s}
+.focus-areas{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.focus-card{background:var(--card-bg);border-radius:16px;padding:2rem;border:1px solid var(--border);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.focus-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.focus-card-accent{position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent)}
+.focus-years{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:var(--accent);line-height:1}
+.focus-title{font-weight:500;margin:.5rem 0 1rem;font-size:1rem}
+.focus-list{list-style:none}
+.focus-list li{font-size:.82rem;color:#666;padding:.3rem 0;border-bottom:1px solid var(--border);line-height:1.4}
+.focus-list li:last-child{border-bottom:none}
+#work{background:var(--ink);color:var(--paper)}
+#work .section-label{color:var(--accent)}
+#work .section-label::before{background:var(--accent)}
+.work-intro{font-size:1.1rem;line-height:1.7;color:rgba(245,242,236,.7);max-width:600px;margin-top:1rem;font-style:italic}
+.work-categories{margin-top:4rem}
+.work-category{margin-bottom:3rem}
+.work-category-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(245,242,236,.4);margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(245,242,236,.1)}
+.work-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.work-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.5rem;text-decoration:none;color:var(--paper);display:block;transition:background .2s,border-color .2s,transform .2s;position:relative;overflow:hidden;cursor:pointer}
+.work-card:hover{background:rgba(255,255,255,.08);border-color:rgba(232,93,38,.4);transform:translateY(-3px)}
+.work-card-emoji{font-size:1.4rem;margin-bottom:.75rem;display:block}
+.work-card-title{font-weight:500;font-size:.95rem;margin-bottom:.4rem}
+.work-card-desc{font-size:.8rem;color:rgba(245,242,236,.5);line-height:1.5}
+.work-card-tools{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.3rem}
+.work-tool{font-size:.7rem;padding:.2rem .6rem;background:rgba(255,255,255,.07);border-radius:4px;color:rgba(245,242,236,.6)}
+.work-card-link{position:absolute;top:1rem;right:1rem;font-size:.7rem;color:var(--accent);opacity:0;transition:opacity .2s}
+.work-card:hover .work-card-link{opacity:1}
+#reviews{background:var(--paper)}
+.reviews-intro{font-size:1.1rem;color:#666;max-width:500px;margin-top:.5rem}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-top:3.5rem}
+.review-card{background:var(--card-bg);border-radius:16px;padding:2rem;border:1px solid var(--border);transition:transform .3s,box-shadow .3s}
+.review-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.08)}
+.review-quote{font-size:.95rem;line-height:1.7;color:#333;margin-bottom:1.5rem}
+.review-quote::before{content:'\201C';font-family:'Syne',sans-serif;font-size:3rem;color:var(--accent);line-height:0;vertical-align:-.8rem;margin-right:.2rem}
+.review-person{display:flex;align-items:center;gap:.75rem}
+.review-avatar{width:46px;height:46px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;color:var(--paper);flex-shrink:0;overflow:hidden}
+.review-avatar img{width:[#];height:[#];object-fit:cover;border-radius:50%}
+.review-name{font-weight:500;font-size:.9rem}
+.review-title{font-size:.75rem;color:#888;line-height:1.4}
+.review-linkedin{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;color:var(--accent);text-decoration:none;margin-top:.3rem;font-weight:500;opacity:.8;transition:opacity .2s}
+.review-linkedin:hover{opacity:1}
+.review-linkedin svg{width:12px;height:12px;fill:currentColor}
+#contact{background:var(--accent);color:#fff;padding:6rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+#contact::before{content:'LET\'S WORK';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-size:clamp(80px,15vw,200px);font-weight:800;color:rgba(255,255,255,.08);white-space:nowrap;pointer-events:none}
+.contact-title{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;line-height:1;letter-spacing:-.03em;position:relative;z-index:2}
+.contact-sub{font-size:1.1rem;opacity:.85;margin-top:1rem;position:relative;z-index:2}
+.contact-links{display:flex;justify-content:center;gap:1rem;margin-top:2.5rem;position:relative;z-index:2;flex-wrap:wrap}
+.contact-btn{padding:.9rem 2.2rem;border-radius:100px;font-weight:500;font-size:.9rem;text-decoration:none;transition:transform .2s,background .2s;display:inline-flex;align-items:center;gap:.5rem}
+.contact-btn-white{background:#fff;color:var(--accent)}
+.contact-btn-white:hover{transform:translateY(-2px)}
+.contact-btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.contact-btn-outline:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.footer-bar{background:var(--ink);color:rgba(245,242,236,.4);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;font-size:.8rem}
+.nav-icons{display:flex;align-items:center;gap:.75rem}
+.nav-left{display:flex;align-items:center;gap:.75rem}
+.nav-icon{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(0,0,0,0.15);color:var(--ink);text-decoration:none;transition:background .2s,border-color .2s,color .2s}
+.nav-icon:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav-icon svg{width:15px;height:15px;fill:currentColor}
+.contact-form-wrap{max-width:540px;margin:2.5rem auto 0;position:relative;z-index:2}
+.contact-form-wrap input,.contact-form-wrap textarea{width:[#];background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);border-radius:10px;padding:.85rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.95rem;color:#fff;outline:none;transition:border-color .2s,background .2s;margin-bottom:.75rem;display:block}
+.contact-form-wrap input::placeholder,.contact-form-wrap textarea::placeholder{color:rgba(255,255,255,.55)}
+.contact-form-wrap input:focus,.contact-form-wrap textarea:focus{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.2)}
+.contact-form-wrap textarea{resize:vertical;min-height:120px}
+.contact-form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.contact-submit{width:[#];padding:1rem;background:#fff;color:var(--accent);border:none;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;transition:transform .2s,background .2s;margin-top:.25rem}
+.contact-submit:hover{transform:translateY(-2px);background:var(--ink);color:#fff}
+.contact-success{display:none;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);border-radius:12px;padding:1.5rem;margin-top:.75rem;font-size:.95rem;color:#fff}
+.contact-social-row{display:flex;justify-content:center;gap:1rem;margin-top:2rem;position:relative;z-index:2;flex-wrap:wrap}
+.contact-social-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:100px;font-size:.85rem;font-weight:500;text-decoration:none;transition:transform .2s,background .2s;border:1.5px solid rgba(255,255,255,.4);color:#fff}
+.contact-social-btn:hover{background:rgba(255,255,255,.15);transform:translateY(-2px)}
+.contact-social-btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0}
+
+/* CASE STUDY STYLES */
+.cs-hero{min-height:70vh;background:var(--ink);display:flex;flex-direction:column;justify-content:flex-end;padding:8rem 2.5rem 4rem;position:relative;overflow:hidden}
+.cs-hero-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-size:clamp(60px,11vw,160px);font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.05);white-space:nowrap;pointer-events:none;letter-spacing:-.04em}
+.cs-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
+.cs-eyebrow::before{content:'';display:block;width:30px;height:1.5px;background:var(--accent)}
+.cs-title{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5.5vw,5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;color:var(--paper);max-width:800px;position:relative;z-index:2}
+.cs-title em{font-style:italic;font-weight:300;font-family:'DM Sans',sans-serif;color:var(--accent)}
+.cs-meta-row{display:flex;gap:3rem;margin-top:3rem;position:relative;z-index:2;flex-wrap:wrap}
+.cs-meta-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(245,242,236,.4);margin-bottom:.3rem}
+.cs-meta-value{font-size:.9rem;color:var(--paper);font-weight:500}
+.stat-bar{background:var(--accent);padding:2rem 2.5rem;display:flex;gap:0}
+.stat-item{flex:1;padding:0 2rem;border-right:1px solid rgba(255,255,255,.2);text-align:center}
+.stat-item:first-child{padding-left:0}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Syne',sans-serif;font-size:clamp(1rem,2.5vw,2rem);font-weight:800;color:#fff;line-height:1;white-space:nowrap}
+.stat-label{font-size:.75rem;color:rgba(255,255,255,.75);margin-top:.3rem}
+.cs-body{max-width:820px;margin:0 auto;padding:5rem 2.5rem}
+.cs-section{margin-bottom:4rem}
+.cs-section-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);font-weight:600;margin-bottom:1rem}
+.cs-section-tag::before{content:'';display:block;width:20px;height:1.5px;background:var(--accent)}
+.cs-section h2{font-family:'Syne',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.1}
+.cs-section p{font-size:1.05rem;line-height:1.8;color:#333}
+.cs-section p+p{margin-top:1rem}
+.cs-divider{width:[#];height:1px;background:var(--border);margin:4rem 0}
+.tools-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.tool-tag{padding:.45rem 1rem;background:var(--ink);color:var(--paper);border-radius:100px;font-size:.8rem;font-weight:500}
+.gallery-section{background:var(--ink);padding:4rem 2.5rem}
+.gallery-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(245,242,236,.4);margin-bottom:2rem;display:flex;align-items:center;gap:.75rem;max-width:820px;margin-left:auto;margin-right:auto}
+.gallery-label::before{content:'';display:block;width:20px;height:1px;background:rgba(245,242,236,.3)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:820px;margin:0 auto}
+.gallery-item{border-radius:10px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);transition:transform .3s,border-color .3s;display:block;text-decoration:none}
+.gallery-item:hover{transform:translateY(-4px);border-color:rgba(232,93,38,.4)}
+.gallery-item img{width:[#];display:block;object-fit:contain;aspect-ratio:1/1;background:#fff;padding:.5rem}
+.gallery-caption{font-size:.7rem;color:rgba(245,242,236,.4);padding:.6rem .8rem}
+.img-section{background:var(--ink);padding:4rem 2.5rem}
+.img-wrap{max-width:820px;margin:0 auto}
+.img-wrap img{display:block;width:[#];border-radius:10px;object-fit:contain;background:#111}
+.img-grid{max-width:820px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.img-grid img{width:[#];border-radius:10px;object-fit:contain;background:#111;display:block}
+.img-grid-3{max-width:820px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.img-grid-3 img{width:[#];border-radius:10px;object-fit:contain;background:#111;display:block}
+.img-caption{max-width:820px;margin:.75rem auto 0;font-size:.8rem;color:rgba(245,242,236,.4);font-style:italic}
+.ext-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.5rem;padding:.7rem 1.5rem;background:var(--accent);color:#fff;border-radius:100px;font-size:.85rem;font-weight:500;text-decoration:none;transition:opacity .2s}
+.ext-link:hover{opacity:.85}
+.cs-footer{background:var(--paper);padding:4rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);flex-wrap:wrap;gap:1.5rem}
+.cs-footer-back{text-decoration:none;color:var(--ink);font-weight:500;display:flex;align-items:center;gap:.5rem;font-size:.9rem;cursor:pointer}
+.cs-footer-back:hover{color:var(--accent)}
+.cs-footer-next{display:flex;flex-direction:column;align-items:flex-end;text-decoration:none;padding:1.25rem 2rem;background:var(--ink);border-radius:12px;color:var(--paper);transition:background .2s,transform .2s;cursor:pointer}
+.cs-footer-next:hover{background:var(--accent);transform:translateX(4px)}
+.cs-footer-next-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(245,242,236,.5);margin-bottom:.3rem}
+.cs-footer-next-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+.page{display:none}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes scrollPulse{0%,[#]{opacity:1}50%{opacity:.3}}
+
+@media(max-width:768px){
+  /* NAV */
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--paper);flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:200;list-style:none}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:1.4rem;letter-spacing:.05em}
+  .nav-hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:300;padding:4px}
+  .nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all .3s;border-radius:2px}
+  .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .nav-hamburger.open span:nth-child(2){opacity:0}
+  .nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+  /* HERO */
+  #page-home #hero{padding:5rem 1.5rem 4rem}
+  .hero-headline{max-width:[#];font-size:clamp(2.4rem,10vw,4rem)}
+  .hero-sub{max-width:[#];font-size:.95rem}
+  .hero-photo,.hero-photo-overlay{display:none}
+  .hero-stats-row{position:static;margin-top:2.5rem;justify-content:flex-start;gap:1.5rem;flex-wrap:wrap}
+  .hero-stat-num{font-size:1.5rem}
+  .hero-stat-label{font-size:.6rem}
+  .hero-ctas{margin-top:2rem}
+
+  /* SECTIONS */
+  section{padding:3.5rem 1.5rem}
+  .section-title{font-size:clamp(1.8rem,7vw,3rem)}
+
+  /* ABOUT */
+  .about-grid{grid-template-columns:1fr;gap:2rem}
+  .about-body{font-size:1rem}
+  .about-photos img{max-height:320px}
+
+  /* CERTS */
+  .certs-grid{flex-direction:column}
+  .cert-card{min-width:unset}
+
+  /* METRICS */
+  .metrics-grid{grid-template-columns:repeat(2,1fr)}
+  .metric-num{font-size:1.6rem}
+
+  /* FOCUS AREAS */
+  .focus-areas{grid-template-columns:1fr}
+
+  /* WORK */
+  .work-items{grid-template-columns:1fr}
+  .work-intro{font-size:.95rem}
+
+  /* REVIEWS */
+  .reviews-grid{grid-template-columns:1fr}
+
+  /* CONTACT */
+  .contact-title{font-size:clamp(2rem,8vw,3.5rem)}
+  .contact-form-row{grid-template-columns:1fr}
+  .contact-links{flex-direction:column;align-items:center}
+  .contact-social-row{flex-direction:column;align-items:center}
+
+  /* FOOTER */
+  .footer-bar{flex-direction:column;gap:.5rem;text-align:center}
+
+  /* CASE STUDIES */
+  .cs-hero{padding:6rem 1.5rem 3rem}
+  .cs-title{font-size:clamp(2rem,8vw,3.5rem)}
+  .cs-meta-row{gap:1.5rem}
+  .stat-bar{flex-direction:column;gap:0}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.2);padding:1.25rem 0;text-align:left}
+  .stat-item:last-child{border-bottom:none;padding-bottom:0}
+  .cs-body{padding:3rem 1.5rem}
+  .gallery-section,.img-section{padding:2.5rem 1.5rem}
+  .gallery-grid,.img-grid,.img-grid-3{grid-template-columns:1fr}
+  .cs-footer{flex-direction:column;gap:1rem}
+  .cs-footer-next{align-items:flex-start}
+
+  /* MARQUEE */
+  .marquee-inner span{font-size:.75rem;padding:0 1.25rem}
+}
+
+.certs-grid{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:2.5rem}
+.cert-card{display:flex;align-items:center;gap:1.25rem;background:rgba(245,242,236,.06);border:1px solid rgba(245,242,236,.12);border-radius:12px;padding:1.25rem 1.5rem;flex:1;min-width:260px;transition:background .2s,transform .2s}
+.cert-card:hover{background:rgba(245,242,236,.1);transform:translateY(-2px)}
+.cert-badge{width:56px;height:56px;object-fit:contain;flex-shrink:0}
+.cert-badge-placeholder{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.75rem;color:#fff;flex-shrink:0;text-align:center;line-height:1.2}
+.cert-info{}
+.cert-name{font-weight:600;font-size:.9rem;color:var(--paper);line-height:1.3}
+.cert-issuer{font-size:.75rem;color:rgba(245,242,236,.5);margin-top:.2rem}
+.cert-year{font-size:.7rem;color:var(--accent);margin-top:.2rem;font-weight:500;letter-spacing:.05em}
+.cert-verify{font-size:.7rem;color:rgba(245,242,236,.35);text-decoration:none;margin-top:.3rem;display:inline-flex;align-items:center;gap:.25rem;transition:color .2s}
+.cert-verify:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="nav">
+  <div class="nav-left">
+    <a href="#" class="nav-logo" onclick="showPage('home');return false;">[INITIALS]</a>
+    <div class="nav-icons" id="nav-icons">
+      <a href="https://linkedin.com/in/[your-linkedin]/" target="_blank" class="nav-icon" title="LinkedIn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://substack.com/@[your-substack]" target="_blank" class="nav-icon" title="Substack">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+      </a>
+    </div>
+  </div>
+  <ul class="nav-links" id="main-nav-links">
+    <li><a onclick="showPage('home');scrollToSection('about');closeMobileNav();return false;">About</a></li>
+    <li><a onclick="showPage('home');scrollToSection('impact');closeMobileNav();return false;">Impact</a></li>
+    <li><a onclick="showPage('home');scrollToSection('work');closeMobileNav();return false;">Work</a></li>
+    <li><a onclick="showPage('home');scrollToSection('reviews');closeMobileNav();return false;">Reviews</a></li>
+    <li><a onclick="showPage('home');scrollToSection('contact');closeMobileNav();return false;" style="color:var(--accent);font-weight:600;">Let's Connect</a></li>
+  </ul>
+  <div class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" style="display:none">
+    <span></span><span></span><span></span>
+  </div>
+  <a href="#" class="nav-back" id="nav-back" style="display:none;" onclick="showPage('home');return false;">← Back to Work</a>
+</nav>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page">
+<!-- NAV -->
+
+
+<!-- HERO -->
+<section id="hero">
+
+  <img
+    class="hero-photo"
+    src="[YOUR-IMAGE-URL]"
+    alt="[YOUR NAME]"
+    onerror="this.style.display='none'"
+  />
+  <div class="hero-photo-overlay"></div>
+
+  <p class="hero-eyebrow">[YOUR TITLE]</p>
+  <h1 class="hero-headline">I [verb]<br><em>[word]</em><br>[continuation].</h1>
+  <p class="hero-sub">[Your 1-2 sentence value proposition. What do you do and for whom?]</p>
+  <div class="hero-ctas">
+    <a href="#" onclick="scrollToSection('work');return false;" class="btn-primary" style="text-decoration:none">See the work</a>
+  </div>
+
+  <div class="hero-stats-row">
+    <div class="hero-stat"><div class="hero-stat-num">[X]</div><div class="hero-stat-label">[Stat label]</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">[X]</div><div class="hero-stat-label">[Stat label]</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">[X]</div><div class="hero-stat-label">[Stat label]</div></div>
+  </div>
+
+
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner"><span>[Your skill or keyword]</span><span>[Your skill or keyword]</span><span>[Your skill or keyword]</span><span>[Your skill or keyword]</span><span>[Your skill or keyword]</span></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title reveal">[Your section headline.]</h2>
+  <div class="about-grid">
+    <div>
+      <div class="about-body reveal">
+        <p>[Your about paragraph 1. What is your core strength and approach?]</p>
+        <p>[Your about paragraph 2. Highlight a key accomplishment or the scope of your experience.]</p>
+        <p>[Your about paragraph 3.]</p>
+        <p>[Your about paragraph 4.]</p>
+      </div>
+      <div class="about-tags reveal">
+        <div style="font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,242,236,.4);margin-bottom:.75rem;width:[#]">My Toolkit</div>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+        <span class="tag">[Tool]</span>
+      </div>
+    </div>
+    <div class="about-photos reveal"><img src="[YOUR-PHOTO-URL]" alt="[YOUR NAME]" /></div>
+    </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<div style="background:var(--ink);padding:0 2.5rem 4rem;">
+  <div style="font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,242,236,.4);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;padding-top:0"><span style="display:block;width:30px;height:1.5px;background:var(--accent)"></span>Certifications</div>
+  <div class="certs-grid reveal">
+    <div class="cert-card">
+      <div class="cert-badge-placeholder" style="background:rgba(245,242,236,.15);font-size:.7rem;color:rgba(245,242,236,.6)">C1</div>
+      <div class="cert-info">
+        <div class="cert-name">[Certification Name]</div>
+        <div class="cert-issuer">[Issuing Organization]</div>
+        <div class="cert-year">[Month Year]</div>
+        <a href="[VERIFY-URL]" target="_blank" class="cert-verify">Verify ↗</a>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge-placeholder" style="background:rgba(245,242,236,.15);font-size:.7rem;color:rgba(245,242,236,.6)">C2</div>
+      <div class="cert-info">
+        <div class="cert-name">[Certification Name]</div>
+        <div class="cert-issuer">[Issuing Organization]</div>
+        <div class="cert-year">[Month Year]</div>
+        <a href="[VERIFY-URL]" target="_blank" class="cert-verify">Verify ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,242,236,.4);margin-bottom:1.5rem;margin-top:2.5rem;display:flex;align-items:center;gap:.75rem"><span style="display:block;width:30px;height:1.5px;background:var(--accent)"></span>Achievements</div>
+  <div class="certs-grid reveal">
+    <div class="cert-card">
+      <div class="cert-badge-placeholder" style="background:rgba(245,242,236,.15);font-size:.7rem;color:rgba(245,242,236,.6)">🏆</div>
+      <div class="cert-info">
+        <div class="cert-name">[Achievement or Award Name]</div>
+        <div class="cert-issuer">[Organization · Context]</div>
+        <div class="cert-year">[Year · Brief description]</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IMPACT -->
+<section id="impact">
+  <div class="section-label">Impact</div>
+  <h2 class="section-title reveal">[Your section headline.]</h2>
+
+  <div class="metrics-grid reveal">
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+    <div class="metric-cell"><div class="metric-num">[#]</div><div class="metric-label">[Metric description]</div></div>
+  </div>
+
+  <div class="focus-areas">
+    <div class="focus-card reveal">
+      <div class="focus-card-accent"></div>
+      <div class="focus-years">3+</div>
+      <div class="focus-title">[Discipline or Skill Area]</div>
+      <ul class="focus-list">
+      </ul>
+    </div>
+    <div class="focus-card reveal">
+      <div class="focus-card-accent" style="background:#1a3a5c"></div>
+      <div class="focus-years" style="color:#1a3a5c">3+</div>
+      <div class="focus-title">[Discipline or Skill Area]</div>
+      <ul class="focus-list">
+      </ul>
+    </div>
+    <div class="focus-card reveal">
+      <div class="focus-card-accent" style="background:#888"></div>
+      <div class="focus-years" style="color:#888">2+</div>
+      <div class="focus-title">[Discipline or Skill Area]</div>
+      <ul class="focus-list">
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-label">Work</div>
+  <h2 class="section-title reveal">[Your section headline.]</h2>
+  <p class="work-intro reveal">Great work comes from clarity, collaboration, and execution. A look behind the scenes at the projects that shaped my experience.</p>
+
+  <div class="work-categories">
+
+    <div class="work-category reveal">
+      <div class="work-category-title">[CATEGORY NAME]</div>
+      <div class="work-items">
+        <a href="#" onclick="showPage('[page-slug]');return false;" class="work-card">
+          <span class="work-card-emoji">[EMOJI]</span>
+          <div class="work-card-title">[Project Title]</div>
+          <div class="work-card-desc">[One line outcome or description]</div>
+          <div class="work-card-tools"><span class="work-tool">[Tool]</span></div>
+          <span class="work-card-link">Case Study →</span>
+        </a>
+        <!-- Add more work cards here -->
+      </div>
+    </div>
+
+    <!-- Add more categories here -->
+
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-label">Reviews</div>
+  <h2 class="section-title reveal">[Your section headline.]</h2>
+  <p class="reviews-intro reveal">[Brief intro to your reviewers.]</p>
+
+  <div class="reviews-grid">
+
+    <div class="review-card reveal">
+      <div class="review-quote">[Quote from reviewer. Keep it specific and outcome-focused.]</div>
+      <div class="review-person">
+        <div class="review-avatar"><img src="[REVIEWER-PHOTO-URL]" alt="[Name]" onerror="this.style.display='none';this.parentNode.textContent='[XX]'" /></div>
+        <div>
+          <div class="review-name">[Full Name]</div>
+          <div class="review-title">[Title · Company]</div>
+          <a class="review-linkedin" href="https://linkedin.com/in/[reviewer-linkedin]/" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more review cards here -->
+
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section id="contact">
+  <h2 class="contact-title">Ready to build<br>something together?</h2>
+  <p class="contact-sub">[Your contact prompt — e.g. "Send me a message and I'll get back to you shortly."]</p>
+
+  <div class="contact-form-wrap">
+    <div class="contact-form-row">
+      <input type="text" id="cf-name" placeholder="Your name" />
+      <input type="email" id="cf-email" placeholder="Your email" />
+    </div>
+    <input type="text" id="cf-subject" placeholder="Subject" />
+    <textarea id="cf-message" placeholder="[Your placeholder message]"></textarea>
+    <button class="contact-submit" onclick="submitContactForm()">Send Message →</button>
+    <div class="contact-success" id="cf-success">✓ Message sent. I'll be in touch soon!</div>
+  </div>
+
+  <div class="contact-social-row">
+    <a href="https://linkedin.com/in/[your-linkedin]/" target="_blank" class="contact-social-btn">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://substack.com/@[your-substack]" target="_blank" class="contact-social-btn">
+      <svg viewBox="0 0 24 24"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+      Substack
+    </a>
+    <a href="mailto:[YOUR EMAIL]" class="contact-social-btn">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      Email Me
+    </a>
+  </div>
+</section>
+<div class="footer-bar"><span>[Your skill or keyword]</span><span>[Your skill or keyword]</span></div>
+</div>
+
+<!-- CASE STUDY PAGES -->
+
+<div id="page-nba-finals" class="page" style="display:none">
+<!-- HERO -->
+<div class="cs-hero">
+  <div class="cs-hero-bg">NBA FINALS</div>
+  <div class="cs-eyebrow">Campaign Planning & Ops</div>
+  <h1 class="cs-title">NBA Finals<br><em>Product Launch</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Fanatics Authentic</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2024</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Product Assortment Lead</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Slack · Excel · Dynamics · Trello</div></div>
+  </div>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">[#]</div><div class="stat-label">YoY demand spike for Champion SKUs</div></div>
+  <div class="stat-item"><div class="stat-num">$15.46M+</div><div class="stat-label">Total team revenue contributed</div></div>
+  <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Fulfillment delays at launch</div></div>
+  <div class="stat-item"><div class="stat-num">Ahead</div><div class="stat-label">Of schedule at completion</div></div>
+</div>
+
+<!-- BODY -->
+<div class="cs-body">
+
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>High pressure, short timelines, zero room for error.</h2>
+    <p>Fanatics needed to rapidly plan and execute a full merchandise strategy for the 2024 NBA Finals, supporting both e-commerce and athlete signing programs under a compressed timeline. With Championship momentum building fast, every day of delayed planning meant lost revenue opportunity and potential fulfillment risk.</p>
+    <p>The stakes were high: a Finals appearance creates a narrow, irreversible window to capture peak demand. The product assortment, creative assets, warehouse coordination, and licensing alignment all had to move in parallel.</p>
+  </div>
+
+  <div class="cs-divider"></div>
+
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>End-to-end ownership from concept to launch.</h2>
+    <p>I led the product assortment strategy across all Champion SKUs, determining which products to prioritize, in what quantities, and through which channels. This meant collaborating closely with the Graphics team to align on creative direction while simultaneously coordinating with warehouse and fulfillment teams to keep timelines tight.</p>
+    <p>I served as a connective layer across Senior Leadership, Licensing Partners, Marketing, Sales, and Warehouse, translating priorities between teams and keeping the launch on track. My focus throughout was SKU accuracy and cross-team execution: making sure every product was correct, every stakeholder was aligned, and every deadline was met.</p>
+    <div class="tools-row">
+      <span class="tool-tag">Slack</span>
+      <span class="tool-tag">Excel</span>
+      <span class="tool-tag">Microsoft Dynamics</span>
+      <span class="tool-tag">Photoshop</span>
+      <span class="tool-tag">Trello</span>
+    </div>
+  </div>
+
+  <div class="cs-divider"></div>
+
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>[#] demand spike. Zero delays.</h2>
+    <p>Champion product demand increased by [#] year-over-year, contributing to $15.46M+ in total team revenue. The launch completed ahead of schedule with zero fulfillment delays, a direct result of early cross-functional alignment and proactive logistics coordination.</p>
+    <p>The process we built also created a replicable framework for future high-velocity launches, making it easier to respond quickly to future Championship and playoff moments.</p>
+  </div>
+
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-section">
+  <div class="gallery-label">Product Collection: 2024 NBA Finals Memorabilia</div>
+  <div class="gallery-grid">
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/boston-celtics/boston-celtics-2024-nba-finals-champions-12-larry-obrien-replica-trophy/o-5769+t-36810586+p-792223393693+z-8-1171635157" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Larry O'Brien Trophy Replica" />
+      <div class="gallery-caption">Larry O'Brien Replica Trophy</div>
+    </a>
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/boston-celtics/boston-celtics-framed-15-x-17-road-to-2024-nba-finals-champions-collage/o-2492+t-03817208+p-6899237559998+z-9-2838385197" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Road to Championship Collage" />
+      <div class="gallery-caption">Road to Championship Framed Collage</div>
+    </a>
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/boston-celtics/boston-celtics-2024-nba-finals-champions-framed-10-x-18-collage-with-facsimile-signatures/o-3536+t-14478375+p-7911780863043+z-9-1710665461" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Finals Champions Framed Collage" />
+      <div class="gallery-caption">Finals Champions Framed Collage w/ Signatures</div>
+    </a>
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/boston-celtics/jaylen-brown-boston-celtics-2024-nba-finals-champions-framed-16-x-20-mvp-collage/o-13[#]t-92472731+p-0277014247848+z-9-3931114178" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Jaylen Brown MVP Collage" />
+      <div class="gallery-caption">Jaylen Brown MVP Framed Collage</div>
+    </a>
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/boston-celtics/boston-celtics-framed-20-x-24-2024-nba-finals-champions-collage/o-3558+t-58038342+p-1399896465411+z-9-3402205277" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="20x24 Champions Collage" />
+      <div class="gallery-caption">20×24 Finals Champions Collage</div>
+    </a>
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/boston-celtics/jayson-tatum-boston-celtics-autographed-framed-2024-nba-finals-champions-kelly-green-nike-icon-edition-swingman-jersey-collage/o-7903+t-70038342+p-915578548300+z-8-1166966961" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Jayson Tatum Autographed Jersey Collage" />
+      <div class="gallery-caption">Jayson Tatum Autographed Jersey Collage</div>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER NAV -->
+<div class="cs-footer">
+  <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
+  <a href="#" onclick="showPage('hot-market');return false;" class="cs-footer-next">
+    <div class="cs-footer-next-label">Next Case Study</div>
+    <div class="cs-footer-next-title">Hot Market Collection →</div>
+  </a>
+</div>
+</div>
+
+<div id="page-hot-market" class="page" style="display:none">
+<div class="cs-hero">
+  <div class="cs-hero-bg">HOT MARKET</div>
+  <div class="cs-eyebrow">Campaign Planning & Ops</div>
+  <h1 class="cs-title">Hot Market<br><em>Collection</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Fanatics Authentic</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2024</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Product Lead</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Slack · Excel · Dynamics · Trello</div></div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">48hrs</div><div class="stat-label">From sports moment to live product</div></div>
+  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">SKUs built across NBA & WNBA</div></div>
+  <div class="stat-item"><div class="stat-num">Multi</div><div class="stat-label">Event windows captured simultaneously</div></div>
+  <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Missed launch windows</div></div>
+</div>
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>Peak fan demand has a shelf life measured in hours.</h2>
+    <p>Fanatics Authentic had tight windows to capitalize on high-urgency sports moments, including the NBA Playoffs, All-Star Game, and both NBA/WNBA In-Season Tournament Awards. These events drove explosive traffic spikes and required fully coordinated product rollouts within hours of the final buzzer. Missing a window meant leaving real revenue on the table.</p>
+    <p>The challenge was building a repeatable process that could move fast enough to match the speed of sports, across licensing, graphics, warehouse, and e-commerce, without sacrificing product accuracy or brand quality.</p>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>Building 500+ SKUs against the clock.</h2>
+    <p>I led the full product creation process for these fast-turn launches, building over 500 SKUs for signing memorabilia across NBA and WNBA. That meant aligning with Events, Licensing, and Fulfillment simultaneously to ensure the right products existed at the right time, and that signable inventory matched each athlete's specific schedule window.</p>
+    <p>I flagged risk early, tracked approvals across teams, and prepped all product copy ahead of launch. When issues surfaced in compliance, fulfillment timing, or SKU accuracy, I was the connective layer resolving them before they became delays.</p>
+    <div class="tools-row">
+      <span class="tool-tag">Slack</span><span class="tool-tag">Excel</span><span class="tool-tag">Microsoft Dynamics</span><span class="tool-tag">Photoshop</span><span class="tool-tag">Trello</span>
+    </div>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>Seamless same-day fulfillment on the biggest stages.</h2>
+    <p>Every hot market launch window was captured, enabling seamless athlete signing stations, same-day fulfillment, and a fan experience tied directly to real-time sporting moments. The process we refined became a scalable playbook for future high-urgency event rollouts across the calendar.</p>
+  </div>
+</div>
+<div class="gallery-section">
+  <div class="gallery-label">Product Snapshots: Hot Market Event Memorabilia</div>
+  <div class="gallery-grid">
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/wnba-authentic/indiana-fever/caitlin-clark-indiana-fever-framed-16-x-20-wnba-2024-rookie-of-the-year-collage/o-1426+t-81989030+p-1322359428620+z-9-1189673435" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Caitlin Clark WNBA ROY" />
+      <div class="gallery-caption">Caitlin Clark: WNBA 2024 Rookie of the Year</div>
+    </a>
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/new-york-knicks/carmelo-anthony-new-york-knicks-autographed-16-x-20-hall-of-fame-collage-photograph/o-1381+t-69036375+p-4666814452374+z-9-4181949035" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Carmelo Anthony HOF" />
+      <div class="gallery-caption">Carmelo Anthony: Hall of Fame Collage</div>
+    </a>
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/boston-celtics/jayson-tatum-boston-celtics-autographed-light-blue-jordan-brand-2025-nba-all-star-game-swingman-jersey/o-6847+t-14473820+p-136657408123+z-8-1851316526" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Jayson Tatum All-Star Jersey" />
+      <div class="gallery-caption">Jayson Tatum: 2025 NBA All-Star Jersey</div>
+    </a>
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/indiana-pacers/tyrese-haliburton-indiana-pacers-autographed-nike-navy-icon-swingman-jersey-shadowbox-with-2025-nba-eastern-conference-champions-logo/o-57[#]t-25478421+p-572258640278+z-8-2900321327" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Tyrese Haliburton EC Champs" />
+      <div class="gallery-caption">Tyrese Haliburton: Eastern Conference Champions</div>
+    </a>
+  </div>
+</div>
+<div class="cs-footer">
+  <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
+  <a href="#" onclick="showPage('fanatics-fest');return false;" class="cs-footer-next">
+    <div class="cs-footer-next-label">Next Case Study</div>
+    <div class="cs-footer-next-title">Fanatics Fest →</div>
+  </a>
+</div>
+</div>
+
+<div id="page-fanatics-fest" class="page" style="display:none">
+<div class="cs-hero">
+  <div class="cs-hero-bg">FANATICS FEST</div>
+  <div class="cs-eyebrow">Campaign Planning & Ops</div>
+  <h1 class="cs-title">Fanatics Fest<br><em>2024</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Fanatics Authentic</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2024</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Product & Events Lead</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Slack · Excel · Dynamics · Trello</div></div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">SKUs built for live signings</div></div>
+  <div class="stat-item"><div class="stat-num">Same-Day</div><div class="stat-label">Fulfillment achieved</div></div>
+  <div class="stat-item"><div class="stat-num">Multi-League</div><div class="stat-label">NBA & WNBA covered</div></div>
+  <div class="stat-item"><div class="stat-num">Zero</div><div class="stat-label">Athlete schedule conflicts</div></div>
+</div>
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>One of the biggest stages in sports merchandise. No room for error.</h2>
+    <p>Fanatics Fest is one of the year's highest-profile memorabilia events, bringing fans face-to-face with athletes for live signings and exclusive drops. The challenge: building a product infrastructure that could support real-time fan experiences at scale, with athlete schedules, SKU inventory, licensing compliance, and fulfillment all needing to align precisely before the doors opened.</p>
+    <p>The event also had to capitalize on concurrent sports moments like the NBA All-Star Game, Emirates Cup, and In-Season Tournament, requiring product lines to be built simultaneously across multiple leagues and rosters.</p>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>End-to-end product creation for a live, high-stakes event.</h2>
+    <p>I led the full product creation process, building 500+ SKUs for signing memorabilia across NBA and WNBA. I aligned with Events, Licensing, and Fulfillment teams to ensure signable product inventory matched each athlete's schedule window exactly. That meant tracking inscription approvals, coordinating with Graphics on creative direction, and making sure every item was authenticated and ready for the signing table.</p>
+    <p>I flagged risk early, tracked approvals, and prepped all product copy ahead of launch. When fulfillment or compliance issues surfaced, I was the point of coordination resolving them before they reached the event floor.</p>
+    <div class="tools-row">
+      <span class="tool-tag">Slack</span><span class="tool-tag">Excel</span><span class="tool-tag">Microsoft Dynamics</span><span class="tool-tag">Trello</span><span class="tool-tag">Photoshop</span>
+    </div>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>Seamless fan experience. Product tied to the moment.</h2>
+    <p>The event delivered seamless athlete signing stations and same-day fulfillment across all product lines. Fans experienced product that was directly connected to real-time sporting moments, a standard that requires precise behind-the-scenes coordination to pull off. The rollout was one of the highest-volume product events of the year on one of the biggest stages in sports memorabilia.</p>
+  </div>
+</div>
+<div class="gallery-section">
+  <div class="gallery-label">Product Snapshots: Fanatics Fest 2024</div>
+  <div class="gallery-grid">
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/nba-multi-team/nba-dunk-champions-autographed-spalding-pro-basketball-limited-edition-of-6/o-3525+t-8202951081+p-915513557142+z-9-2188006016" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="NBA Dunk Champions Basketball" />
+      <div class="gallery-caption">NBA Dunk Champions: Autographed Basketball</div>
+    </a>
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/boston-celtics/kevin-garnett-boston-celtics-autographed-11-x-14-spotlight-photograph/o-3569+t-58149420+p-71001056014+z-9-2497823345" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Kevin Garnett Spotlight Photo" />
+      <div class="gallery-caption">Kevin Garnett: Autographed Spotlight Photo</div>
+    </a>
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/new-york-knicks/jalen-brunson-new-york-knicks-autographed-16-x-20-celebration-photograph/o-3558+t-25360753+p-9199910157941+z-9-4240043686" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Jalen Brunson Celebration Photo" />
+      <div class="gallery-caption">Jalen Brunson: Autographed Celebration Photo</div>
+    </a>
+    <a class="gallery-item reveal" href="https://www.fanaticsauthentic.com/nba-authentic/sacramento-kings/chris-webber-sacramento-kings-autographed-nba-game-basketball-with-multiple-inscriptions-limited-edition-of-21/o-1325+t-03708660+p-48834011233+z-9-3730959754" target="_blank">
+      <img src="[YOUR-IMAGE-URL]" alt="Chris Webber Autographed Basketball" />
+      <div class="gallery-caption">Chris Webber: Limited Edition Autographed Basketball</div>
+    </a>
+  </div>
+</div>
+<div class="cs-footer">
+  <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
+  <a href="#" onclick="showPage('scoreboard');return false;" class="cs-footer-next">
+    <div class="cs-footer-next-label">Next Case Study</div>
+    <div class="cs-footer-next-title">Scoreboard Upgrade →</div>
+  </a>
+</div>
+</div>
+
+<div id="page-scoreboard" class="page" style="display:none">
+<div class="cs-hero">
+  <div class="cs-hero-bg">SCOREBOARD</div>
+  <div class="cs-eyebrow">Strategy & Delivery</div>
+  <h1 class="cs-title">Scoreboard<br><em>Upgrade Project</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Miami HEAT</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Venue</div><div class="cs-meta-value">Kaseya Center</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Project Coordinator</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Smartsheet · Word</div></div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Teams coordinated across Engineering, IT, and Facilities</div></div>
+  <div class="stat-item"><div class="stat-num">On Time</div><div class="stat-label">Ready for season opener</div></div>
+  <div class="stat-item"><div class="stat-num">Weekly</div><div class="stat-label">Progress reporting to leadership</div></div>
+  <div class="stat-item"><div class="stat-num">Zero</div><div class="stat-label">Preseason event disruptions</div></div>
+</div>
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>A major arena tech upgrade with a hard season deadline.</h2>
+    <p>Kaseya Center's scoreboard was undergoing a significant technology upgrade ahead of the NBA season, requiring precise coordination across Engineering, IT, and Facilities before any preseason events could take place. With the season start date fixed and non-negotiable, every delay in vendor access, testing, or installation carried real consequences for the fan experience on Opening Night.</p>
+    <p>The project needed someone to own the timeline, manage vendor logistics, and keep all stakeholders aligned without gaps falling through the cracks between departments.</p>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>Owning the timeline from vendor access to test runs.</h2>
+    <p>I scheduled all vendor access windows, managed on-site walkthroughs, and coordinated test runs to ensure the installation progressed on schedule. I logged every update in Smartsheet trackers and ran weekly ops meetings to keep Engineering, IT, and Facilities aligned on outstanding tasks and upcoming milestones.</p>
+    <p>When scheduling conflicts or delays arose, I worked directly with vendors and internal teams to resolve them quickly, keeping the project on track without escalating issues that could have slowed the process down.</p>
+    <div class="tools-row">
+      <span class="tool-tag">Smartsheet</span><span class="tool-tag">Microsoft Word</span>
+    </div>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>Scoreboard live. Season ready.</h2>
+    <p>The scoreboard upgrade was completed and fully operational before the start of the NBA season. Preseason events ran without disruption, and the project landed on time despite tight interdependencies between vendor schedules and internal team availability. A direct outcome of consistent tracking, clear communication, and proactive coordination from start to finish.</p>
+  </div>
+</div>
+<div class="img-section">
+  <div class="img-wrap reveal">
+    <img src="[YOUR-IMAGE-URL]" alt="Kaseya Center Scoreboard" />
+    <div class="img-caption">Snapshot of the updated scoreboard model at Kaseya Center.</div>
+  </div>
+</div>
+<div class="cs-footer">
+  <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
+  <a href="#" onclick="showPage('gsic');return false;" class="cs-footer-next">
+    <div class="cs-footer-next-label">Next Case Study</div>
+    <div class="cs-footer-next-title">Global Sports Industry Conference →</div>
+  </a>
+</div>
+</div>
+
+<div id="page-gsic" class="page" style="display:none">
+<div class="cs-hero">
+  <div class="cs-hero-bg">GSIC 2024</div>
+  <div class="cs-eyebrow">Strategy & Delivery</div>
+  <h1 class="cs-title">Global Sports Industry<br><em>Conference</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Organization</div><div class="cs-meta-value">University of Miami</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Event Logistics Lead</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Slack · Word · Canva</div></div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">300+</div><div class="stat-label">Attendees</div></div>
+  <div class="stat-item"><div class="stat-num">[#]</div><div class="stat-label">Panels ran on time</div></div>
+  <div class="stat-item"><div class="stat-num">ESPN</div><div class="stat-label">Inter Miami, HEAT, Adidas & more</div></div>
+  <div class="stat-item"><div class="stat-num">2 Yrs</div><div class="stat-label">Served as logistics lead</div></div>
+</div>
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>300+ attendees, [#] panels, and executives from ESPN, Inter Miami, and the HEAT.</h2>
+    <p>The University of Miami's Global Sports Industry Conference is one of the premier student-run sports business events in the country, bringing together executives, athletes, and industry leaders for a full day of panels, networking, and discussion. With 300+ attendees and a packed agenda spanning multiple simultaneous sessions, the event's success depended entirely on behind-the-scenes coordination running flawlessly.</p>
+    <p>As event logistics lead, I was responsible for making sure every panel started on time, every speaker knew where to be, and every real-time issue was handled before it could disrupt the program.</p>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>Run-of-show owner, speaker handler, real-time problem solver.</h2>
+    <p>I built the full run-of-show documents for all panels, handled all speaker communications in the lead-up to the event, and managed real-time logistics adjustments throughout the day. When a speaker was running late or a room needed to be reconfigured, I was the point person making the call and keeping everything moving.</p>
+    <p>I also collaborated with the marketing team on pre-event promotion and coordinated shared resources across drives and project tools to keep the planning team aligned through multiple planning cycles over two years.</p>
+    <div class="tools-row">
+      <span class="tool-tag">Slack</span><span class="tool-tag">Microsoft Word</span><span class="tool-tag">Canva</span>
+    </div>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>Every panel on time. Exec speakers leaving impressed.</h2>
+    <p>All [#] panels ran on schedule with strong attendance throughout the day. The event received positive feedback from executive speakers and attendees alike, a direct reflection of the planning, communication, and real-time execution that went into it. I served in this role for two consecutive years, building on the systems and relationships established in year one to make year two even smoother.</p>
+  </div>
+</div>
+<div class="img-section">
+  <div class="img-grid reveal">
+    <img src="[YOUR-IMAGE-URL]" alt="GSIC Conference" />
+    <img src="[YOUR-IMAGE-URL]" alt="GSIC Panel with ESPN's Bobby Marks" />
+  </div>
+  <div class="img-caption">Photo with ESPN's Bobby Marks and panelists from the Philanthropy in Sports session at the 2024 Global Sports Industry Conference.</div>
+</div>
+<div class="cs-footer">
+  <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
+  <a href="#" onclick="showPage('athlete-signings');return false;" class="cs-footer-next">
+    <div class="cs-footer-next-label">Next Case Study</div>
+    <div class="cs-footer-next-title">Athlete Signings →</div>
+  </a>
+</div>
+</div>
+
+<div id="page-athlete-signings" class="page" style="display:none">
+<div class="cs-hero">
+  <div class="cs-hero-bg">SIGNINGS</div>
+  <div class="cs-eyebrow">Strategy & Delivery</div>
+  <h1 class="cs-title">Athlete Signings &<br><em>Meet-and-Greets</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Fanatics Authentic</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Athletes</div><div class="cs-meta-value">Wade · Brunson · Pierce & more</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Signing Ops & SKU Lead</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Slack · Excel · Dynamics · Trello</div></div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">[#]</div><div class="stat-label">High-profile athletes managed</div></div>
+  <div class="stat-item"><div class="stat-num">Sell-Out</div><div class="stat-label">Wade & Brunson lines post-launch</div></div>
+  <div class="stat-item"><div class="stat-num">Private</div><div class="stat-label">& public signing formats executed</div></div>
+  <div class="stat-item"><div class="stat-num">[#]</div><div class="stat-label">On-brand event delivery</div></div>
+</div>
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>Exclusive memorabilia lives and dies by the event behind it.</h2>
+    <p>Fanatics Authentic hosted both private and fan-facing athlete signings to create exclusive memorabilia and deepen brand engagement. These events ranged from intimate private sessions with legends like Dwyane Wade and Jalen Brunson to public meet-and-greets with Paul Pierce, all requiring precision logistics to deliver the kind of fan experience that drives product demand and brand loyalty.</p>
+    <p>The complexity: every athlete has unique inscription preferences, compliance requirements, and schedule constraints. Every SKU needs to be pre-approved, correctly labeled, and physically ready at the signing table. Any gap in that chain means wasted athlete time, unfulfilled product, and disappointed fans.</p>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>SKU creation, logistics, and live event execution.</h2>
+    <p>I managed signing prep and SKU creation for over 10 high-profile athletes, coordinating cross-functionally with Graphics and Player Representation teams to finalize inscription lists and ensure full brand and league compliance. I oversaw logistics for merchandise setup and shipping to ensure smooth on-site execution for every event.</p>
+    <p>On event day, I supported the floor directly, assisting with athlete coordination, fan interaction management, and real-time fulfillment priorities. When issues came up, I was the person resolving them without disrupting the event experience.</p>
+    <div class="tools-row">
+      <span class="tool-tag">Slack</span><span class="tool-tag">Excel</span><span class="tool-tag">Microsoft Dynamics</span><span class="tool-tag">Photoshop</span><span class="tool-tag">Trello</span>
+    </div>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>Top-selling lines. Fans and athletes both walking away satisfied.</h2>
+    <p>Wade and Brunson product lines became some of Fanatics' top-selling memorabilia, frequently selling out within months of launch. The Paul Pierce public event delivered strong fan engagement and reinforced Fanatics' reputation for seamless, on-brand athlete experiences. Each signing produced authenticated, inscribed product lines tied to key athlete milestones, building lasting brand trust on both sides.</p>
+  </div>
+</div>
+<div class="img-section">
+  <div class="img-grid reveal">
+    <img src="[YOUR-IMAGE-URL]" alt="Paul Pierce Signing" />
+    <img src="[YOUR-IMAGE-URL]" alt="Jalen Brunson Signing" />
+  </div>
+  <div class="img-caption">Public meet-and-greet with Paul Pierce and private signing session with Jalen Brunson, two of the high-profile events I supported end-to-end.</div>
+</div>
+<div class="cs-footer">
+  <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
+  <a href="#" onclick="showPage('ticket-sales');return false;" class="cs-footer-next">
+    <div class="cs-footer-next-label">Next Case Study</div>
+    <div class="cs-footer-next-title">Multi-Sport Ticket Sales →</div>
+  </a>
+</div>
+</div>
+
+<div id="page-ticket-sales" class="page" style="display:none">
+<div class="cs-hero">
+  <div class="cs-hero-bg">TICKET SALES</div>
+  <div class="cs-eyebrow">Experience Based Execution</div>
+  <h1 class="cs-title">Multi-Sport<br><em>Ticket Sales</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Organization</div><div class="cs-meta-value">University of Miami Athletics</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Sports</div><div class="cs-meta-value">Football · Basketball · Baseball</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Paciolan</div></div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">[#]</div><div class="stat-label">Games supported across 2 seasons</div></div>
+  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Sports: football, basketball, and baseball</div></div>
+  <div class="stat-item"><div class="stat-num">Outbound</div><div class="stat-label">Calls, emails & group sales</div></div>
+  <div class="stat-item"><div class="stat-num">CRM</div><div class="stat-label">Tracking via Paciolan</div></div>
+</div>
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>Driving attendance across three sports in a competitive market.</h2>
+    <p>The University of Miami Athletics department needed to boost ticket sales and strengthen fan outreach across football, basketball, and baseball over multiple seasons. With a mix of high-demand and lower-visibility games on the schedule, the team needed consistent, personalized outreach to convert cold leads into paying fans and build long-term attendance habits.</p>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>Two full seasons of outbound sales across [#] games.</h2>
+    <p>I worked in outbound ticket sales for two full seasons, supporting over 100 games across all three sports. I made hundreds of calls and sent targeted emails to prospective buyers, promoted single-game and group packages, and provided personalized support to convert interest into sales.</p>
+    <p>I used Paciolan to track all outreach activity, manage customer notes, and report on follow-ups and conversion status, keeping my pipeline organized and my approach data-informed. The role built real fluency in handling objections, working from scripts, and closing cold leads at volume.</p>
+    <div class="tools-row">
+      <span class="tool-tag">Paciolan</span>
+    </div>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>Attendance driven. Sales skills sharpened.</h2>
+    <p>Contributed to attendance goals across key home games and special promotions, helping the department hit seasonal sales targets. Built strong foundational skills in outbound sales, customer relationship management, and the live sports revenue ecosystem, experience that directly informs how I think about fan engagement and revenue strategy today.</p>
+  </div>
+</div>
+<div class="img-section">
+  <div class="img-wrap reveal">
+    <img src="[YOUR-IMAGE-URL]" alt="UM Ticketing Office" />
+    <div class="img-caption">Working the UM ticketing office during baseball season, handling outreach, CRM activity in Paciolan, and in-game sales operations.</div>
+  </div>
+</div>
+<div class="cs-footer">
+  <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
+  <a href="#" onclick="showPage('gsic');return false;" class="cs-footer-next">
+    <div class="cs-footer-next-label">Next Case Study</div>
+    <div class="cs-footer-next-title">Global Sports Industry Conference →</div>
+  </a>
+</div>
+</div>
+
+<div id="page-arena-system" class="page" style="display:none">
+<div class="cs-hero">
+  <div class="cs-hero-bg">ARENA OPS</div>
+  <div class="cs-eyebrow">Internal Tools & Enablement</div>
+  <h1 class="cs-title">HEAT Arena<br><em>Maintenance System</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Miami HEAT</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Systems Builder & Coordinator</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Smartsheet</div></div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">40%</div><div class="stat-label">Reduction in manual follow-ups</div></div>
+  <div class="stat-item"><div class="stat-num">[#]</div><div class="stat-label">Arena ops tasks tracked</div></div>
+  <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Teams aligned across Ops, IT, Security, and Facilities</div></div>
+  <div class="stat-item"><div class="stat-num">Year-End</div><div class="stat-label">Used in leadership reviews</div></div>
+</div>
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>No system. No visibility. A sprawling arena to maintain.</h2>
+    <p>The Miami HEAT lacked a formalized workflow to track and prioritize offseason arena maintenance and renovations. With Kaseya Center requiring constant upkeep across multiple departments including Ops, IT, Security, and Facilities, tasks were tracked informally through emails and spreadsheets that didn't talk to each other. Important work was falling through the cracks, follow-ups were manual and inconsistent, and leadership had no clear view of what was done, in progress, or overdue.</p>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>Built the system from scratch in Smartsheet.</h2>
+    <p>I designed and built a Smartsheet-based system for project intake, prioritization, and automated monthly reminders. The system included a centralized approval form that standardized how departments submitted new maintenance requests, a prioritization dashboard that surfaced high-impact work, and calendar-based automations that eliminated manual follow-up emails entirely.</p>
+    <p>I worked directly with stakeholders across Ops, IT, Security, and Facilities to configure the system around their actual workflows, then trained the team on how to use it consistently. The result was a single source of truth for all active and upcoming arena maintenance work.</p>
+    <div class="tools-row">
+      <span class="tool-tag">Smartsheet</span>
+    </div>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>40% reduction in manual follow-ups. Adopted for year-end reviews.</h2>
+    <p>The system reduced manual follow-up volume by 40% through automated reminders and logic-based alerts. It was used in department-wide end-of-year reviews to report on maintenance completion rates and project outcomes, a sign that it had become genuinely embedded in how the team operated, not just a tool that sat unused after launch.</p>
+  </div>
+</div>
+<div class="img-section">
+  <div class="img-wrap reveal">
+    <img src="[YOUR-IMAGE-URL]" alt="Smartsheet Arena Operations Dashboard" />
+    <div class="img-caption">Smartsheet calendar automation dashboard similar to the one built for the HEAT Arena Operations team, tracking recurring maintenance tasks, owners, reminders, and timelines.</div>
+  </div>
+</div>
+<div class="cs-footer">
+  <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
+  <a href="#" onclick="showPage('bodega-bar');return false;" class="cs-footer-next">
+    <div class="cs-footer-next-label">Next Case Study</div>
+    <div class="cs-footer-next-title">Bodega Bar Renovation →</div>
+  </a>
+</div>
+</div>
+
+<div id="page-bodega-bar" class="page" style="display:none">
+<div class="cs-hero"><div class="cs-hero-bg">BODEGA</div><div class="cs-eyebrow">Strategy & Delivery</div><h1 class="cs-title">Bodega Bar<br><em>Renovation</em></h1><div class="cs-meta-row"><div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Miami HEAT</div></div><div class="cs-meta"><div class="cs-meta-label">Deadline</div><div class="cs-meta-value">NBA All-Star Break</div></div><div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Smartsheet</div></div></div></div>
+<div class="stat-bar"><div class="stat-item"><div class="stat-num">On Time</div><div class="stat-label">Opened for NBA All-Star Break</div></div><div class="stat-item"><div class="stat-num">Weekly</div><div class="stat-label">Progress reports to senior leadership</div></div><div class="stat-item"><div class="stat-num">Multi</div><div class="stat-label">Vendor tracks managed simultaneously</div></div><div class="stat-item"><div class="stat-num">Premium</div><div class="stat-label">Guest experience delivered</div></div></div>
+<div class="cs-body">
+  <div class="cs-section reveal"><div class="cs-section-tag">The Situation</div><h2>A premium bar launch with a hard deadline: Opening Night.</h2><p>The Miami HEAT launched a new premium bar experience inside Kaseya Center that had to be fully operational before the NBA All-Star Break, a high-visibility moment with no room for a soft launch. The renovation involved multiple vendors, signage installs, branding touchpoints, and coordination between construction, Guest Services, and senior leadership, all moving at once with a fixed endpoint.</p><p>With premium hospitality as a key part of the fan experience, the bar had to open on time, on-brand, and fully stocked. A delay or incomplete install would have been visible to thousands of guests and executives.</p></div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal"><div class="cs-section-tag">My Role</div><h2>Timeline tracker, vendor coordinator, progress reporter.</h2><p>I used Smartsheet checklists to track every milestone in the renovation, from vendor scheduling and walkthroughs to signage installs and final branding touchpoints. I conducted regular on-site walkthroughs to verify completion status and flag anything off-track before it became a problem. I reported progress weekly to senior leadership and Guest Services, keeping decision-makers informed without creating noise.</p><div class="tools-row"><span class="tool-tag">Smartsheet</span></div></div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal"><div class="cs-section-tag">The Result</div><h2>Bodega Bar open on time. Guest experience delivered.</h2><p>The bar opened fully operational by the NBA All-Star Break, enhancing the premium guest experience exactly as planned. On-time completion was a direct result of disciplined tracking, proactive vendor coordination, and consistent communication with stakeholders throughout the project.</p></div>
+</div>
+<div class="img-section"><div class="img-wrap reveal"><img src="[YOUR-IMAGE-URL]" alt="Bodega Bar" /><div class="img-caption">Premium bar space representative of Bodega Bar style. I tracked renovation timelines and branding installs ahead of NBA All-Star Break.</div></div></div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('sports-illustrated');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">Sports Illustrated →</div></a></div>
+</div>
+
+<div id="page-sports-illustrated" class="page" style="display:none">
+<div class="cs-hero"><div class="cs-hero-bg">SI FANNATION</div><div class="cs-eyebrow">Digital Content & Storytelling</div><h1 class="cs-title">Sports<br><em>Illustrated</em></h1><div class="cs-meta-row"><div class="cs-meta"><div class="cs-meta-label">Publication</div><div class="cs-meta-value">Sports Illustrated / FanNation</div></div><div class="cs-meta"><div class="cs-meta-label">Beat</div><div class="cs-meta-value">Miami Athletics</div></div><div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Journalism · Tempest CMS</div></div></div></div>
+<div class="stat-bar"><div class="stat-item"><div class="stat-num">[#]</div><div class="stat-label">Articles published nationally</div></div><div class="stat-item"><div class="stat-num">1000s</div><div class="stat-label">Readers reached per piece</div></div><div class="stat-item"><div class="stat-num">2</div><div class="stat-label">UM beats: football and basketball</div></div><div class="stat-item"><div class="stat-num">National</div><div class="stat-label">Platform for South Florida coverage</div></div></div>
+<div class="cs-body">
+  <div class="cs-section reveal"><div class="cs-section-tag">The Situation</div><h2>Covering South Florida sports on a national stage.</h2><p>As a contributor for Sports Illustrated's FanNation vertical, I covered University of Miami football and basketball, writing features, game recaps, and athlete spotlights that reached national audiences interested in South Florida athletics. FanNation operates as one of the most widely read college sports platforms in the country, which meant every piece had to meet a high editorial standard and be delivered on tight deadlines.</p></div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal"><div class="cs-section-tag">My Role</div><h2>Reporter, researcher, and deadline writer.</h2><p>I researched, drafted, and published articles independently, moving from story identification to final publication under deadline. My coverage included game recaps requiring quick turnarounds after final whistles, feature pieces requiring deeper research and sourcing, and athlete spotlights profiling players and their impact on the program.</p><p>Working with Tempest CMS, I handled formatting, SEO optimization, and image sourcing for each piece, taking ownership of the full production process from start to publish.</p><div class="tools-row"><span class="tool-tag">Journalism</span><span class="tool-tag">Tempest CMS</span></div></div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal"><div class="cs-section-tag">The Result</div><h2>Thousands of readers. Lasting credibility.</h2><p>My articles reached thousands of readers and contributed to consistent national coverage of Miami athletics. The experience sharpened my ability to communicate clearly under pressure, synthesize information quickly, and produce polished written work that meets publication standards, skills that translate directly into how I communicate across every professional context today.</p><a href="https://www.si.com/college/miami/author/author-profile-alan-katz" target="_blank" class="ext-link">View Articles on SI.com →</a></div>
+</div>
+<div class="img-section"><div class="img-grid reveal"><img src="[YOUR-IMAGE-URL]" alt="SI UM Articles" /><img src="[YOUR-IMAGE-URL]" alt="SI UCF Articles" /></div><div class="img-caption">Article coverage published under Alan Katz on Sports Illustrated's FanNation platform, covering UM and UCF beats.</div></div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('social-media');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">Student Affairs Social Media →</div></a></div>
+</div>
+
+<div id="page-social-media" class="page" style="display:none">
+<div class="cs-hero"><div class="cs-hero-bg">SOCIAL OPS</div><div class="cs-eyebrow">Digital Content & Storytelling</div><h1 class="cs-title">Student Affairs<br><em>Social Media</em></h1><div class="cs-meta-row"><div class="cs-meta"><div class="cs-meta-label">Organization</div><div class="cs-meta-value">UM Division of Student Affairs</div></div><div class="cs-meta"><div class="cs-meta-label">Duration</div><div class="cs-meta-value">2 Years</div></div><div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Canva · Sprout Social · Wrike · CMS</div></div></div></div>
+<div class="stat-bar"><div class="stat-item"><div class="stat-num">[#]</div><div class="stat-label">Posts and newsletters created</div></div><div class="stat-item"><div class="stat-num">Multi</div><div class="stat-label">Departments: wellness, housing, and orgs</div></div><div class="stat-item"><div class="stat-num">2 Yrs</div><div class="stat-label">Consistent content production</div></div><div class="stat-item"><div class="stat-num">Growth</div><div class="stat-label">Follower & engagement lift</div></div></div>
+<div class="cs-body">
+  <div class="cs-section reveal"><div class="cs-section-tag">The Situation</div><h2>Refreshing a stale digital presence across multiple departments.</h2><p>UM Student Affairs needed to modernize their digital presence and drive real engagement across departments including wellness, housing, and student organizations. The existing content strategy lacked consistency, visual cohesion, and a clear approach to reaching students where they actually spent their time online.</p><p>With multiple departments under one umbrella, the challenge was building a content operation that felt unified in voice and quality while remaining relevant to each audience's specific interests and needs.</p></div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal"><div class="cs-section-tag">My Role</div><h2>Content creator, scheduler, and campaign collaborator.</h2><p>I created and scheduled social media content calendars, collaborated on campaigns across departments, filmed and edited reels, and optimized captions and hashtags for engagement. I used Canva for design, Sprout Social for scheduling and performance tracking, and Wrike to coordinate content approvals and deadlines across the team.</p><p>Over two years, I contributed to a consistent, evolving content strategy that grew the department's digital footprint and drove students toward in-person events and campus resources they might not have discovered otherwise.</p><div class="tools-row"><span class="tool-tag">Canva</span><span class="tool-tag">Sprout Social</span><span class="tool-tag">Wrike</span><span class="tool-tag">CMS</span><span class="tool-tag">Instagram</span></div></div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal"><div class="cs-section-tag">The Result</div><h2>Higher follower counts. Stronger event turnout.</h2><p>Helped increase follower counts and engagement rates across main wellness channels. Content contributed to strong in-person event turnout and boosted digital awareness of student resources. The work also built a content infrastructure that ran more efficiently, with clearer approval processes, better scheduling consistency, and data-informed adjustments to what was resonating with students.</p></div>
+</div>
+<div class="img-section"><div class="img-grid reveal"><img src="[YOUR-IMAGE-URL]" alt="Social Media Dashboard" /><img src="[YOUR-IMAGE-URL]" alt="UM Wellness Instagram" /></div><div class="img-caption">Sprout Social publishing dashboard and UM Wellness Center Instagram feed, platforms used for content strategy, scheduling, and performance tracking.</div></div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('newsletter');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">HTML Newsletter Creation →</div></a></div>
+</div>
+
+<div id="page-newsletter" class="page" style="display:none">
+<div class="cs-hero"><div class="cs-hero-bg">NEWSLETTER</div><div class="cs-eyebrow">Digital Content & Storytelling</div><h1 class="cs-title">HTML Newsletter<br><em>Creation</em></h1><div class="cs-meta-row"><div class="cs-meta"><div class="cs-meta-label">Organization</div><div class="cs-meta-value">UM Student Affairs</div></div><div class="cs-meta"><div class="cs-meta-label">Format</div><div class="cs-meta-value">Monthly email + web</div></div><div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">CMS · HTML · Wrike</div></div></div></div>
+<div class="stat-bar"><div class="stat-item"><div class="stat-num">Monthly</div><div class="stat-label">Recurring publication cadence</div></div><div class="stat-item"><div class="stat-num">Higher</div><div class="stat-label">Open & click-through rates</div></div><div class="stat-item"><div class="stat-num">HTML</div><div class="stat-label">Custom-coded design</div></div><div class="stat-item"><div class="stat-num">Widely</div><div class="stat-label">Shared among students & staff</div></div></div>
+<div class="cs-body"><div class="cs-section reveal"><div class="cs-section-tag">The Situation</div><h2>A newsletter students would actually read.</h2><p>UM Student Affairs wanted to launch a modernized monthly newsletter distributable via email and hosted on the web, one that looked polished, felt on-brand, and actually drove engagement with campus resources and events. Previous attempts lacked visual consistency and weren't generating the open or click-through rates the department needed.</p></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">My Role</div><h2>Designer, coder, copywriter, and coordinator.</h2><p>I designed and coded HTML newsletters from scratch using internal CMS tools, embedding media, event announcements, wellness tips, and department spotlights into each send. I drafted copy for each section, maintained brand consistency across layouts, and tracked open rates to inform future iterations.</p><p>The production process involved coordinating feedback rounds across multiple stakeholders using Wrike, keeping revisions organized and sends on schedule each month without last-minute scrambles.</p><div class="tools-row"><span class="tool-tag">HTML</span><span class="tool-tag">CMS</span><span class="tool-tag">Wrike</span></div></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">The Result</div><h2>Improved rates. A widely shared monthly staple.</h2><p>The newsletter saw improved click-through and open rates versus the previous format. It became a widely shared monthly resource among students and staff. The production workflow I built also made each subsequent issue faster and less labor-intensive to produce. <a href="https://d1fdloi71mui9q.cloudfront.net/76HTqmrkQxiEfLQnCKu3_Lakeside%20Updates%20_%20Lakeside%20Village.pdf" target="_blank" class="ext-link">View Example Newsletter →</a></p></div></div>
+<div class="img-section"><div class="img-grid reveal"><img src="[YOUR-IMAGE-URL]" alt="Newsletter" /><img src="[YOUR-IMAGE-URL]" alt="CMS" /></div><div class="img-caption">Branded HTML newsletters designed in CMS with custom layouts, copy, and embedded media.</div></div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('eloqua');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">Oracle Eloqua Campaigns →</div></a></div>
+</div>
+
+<div id="page-eloqua" class="page" style="display:none">
+<div class="cs-hero"><div class="cs-hero-bg">ELOQUA</div><div class="cs-eyebrow">Audience Engagement & Growth</div><h1 class="cs-title">Oracle Eloqua<br><em>Email Campaigns</em></h1><div class="cs-meta-row"><div class="cs-meta"><div class="cs-meta-label">Organization</div><div class="cs-meta-value">UM Athletics</div></div><div class="cs-meta"><div class="cs-meta-label">Platform</div><div class="cs-meta-value">Oracle Eloqua</div></div><div class="cs-meta"><div class="cs-meta-label">Goal</div><div class="cs-meta-value">Ticket sales & fan engagement</div></div></div></div>
+<div class="stat-bar"><div class="stat-item"><div class="stat-num">Targeted</div><div class="stat-label">Audience segments by sport & fan type</div></div><div class="stat-item"><div class="stat-num">Improved</div><div class="stat-label">Email engagement rates</div></div><div class="stat-item"><div class="stat-num">ROI</div><div class="stat-label">Driven through ticket promotions</div></div><div class="stat-item"><div class="stat-num">Data</div><div class="stat-label">Campaign insights to sales leadership</div></div></div>
+<div class="cs-body"><div class="cs-section reveal"><div class="cs-section-tag">The Situation</div><h2>Driving ticket sales through smarter email marketing.</h2><p>UM Athletics wanted to drive ticket sales, fan engagement, and awareness across football, basketball, and Olympic sports through targeted email campaigns. The challenge was moving beyond batch-and-blast sends to a more segmented, data-driven approach that spoke to different audiences differently.</p></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">My Role</div><h2>Building, segmenting, and optimizing campaigns in Eloqua.</h2><p>I executed email marketing campaigns end-to-end using Oracle Eloqua. I built audience segments by sport and fan type, optimized subject lines for open rate performance, designed email layouts with supporting graphics, and tracked delivery and engagement metrics to continuously refine the strategy.</p><p>Each campaign was informed by previous performance data, allowing me to make iterative improvements to targeting, timing, and content that compounded over the season.</p><div class="tools-row"><span class="tool-tag">Oracle Eloqua</span></div></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">The Result</div><h2>Higher engagement. Revenue from targeted promotions.</h2><p>Improved engagement rates and generated measurable ROI through targeted ticket promotions. Provided campaign performance insights to sales leadership to inform future strategy and budget decisions, establishing a more evidence-based approach to fan outreach across the athletics program.</p></div></div>
+<div class="img-section"><div class="img-wrap reveal"><img src="[YOUR-IMAGE-URL]" alt="Oracle Eloqua" /></div><div class="img-caption">Oracle Eloqua CRM system used for campaign building and fan targeting at UM Athletics.</div></div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('netklik');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">NetKlik Onboarding Video →</div></a></div>
+</div>
+
+<div id="page-netklik" class="page" style="display:none">
+<div class="cs-hero"><div class="cs-hero-bg">NETKLIK</div><div class="cs-eyebrow">Audience Engagement & Growth</div><h1 class="cs-title">NetKlik<br><em>Onboarding Video</em></h1><div class="cs-meta-row"><div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">NetKlik</div></div><div class="cs-meta"><div class="cs-meta-label">Format</div><div class="cs-meta-value">Explainer / walkthrough video</div></div><div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Canva · ScreenFlow</div></div></div></div>
+<div class="stat-bar"><div class="stat-item"><div class="stat-num">Embedded</div><div class="stat-label">In new user onboarding flow</div></div><div class="stat-item"><div class="stat-num">Increased</div><div class="stat-label">First-week engagement metrics</div></div><div class="stat-item"><div class="stat-num">Brand</div><div class="stat-label">Consistent visuals throughout</div></div><div class="stat-item"><div class="stat-num">End-to-End</div><div class="stat-label">Scripted, shot, and edited solo</div></div></div>
+<div class="cs-body"><div class="cs-section reveal"><div class="cs-section-tag">The Situation</div><h2>New users needed a clearer path to value.</h2><p>NetKlik needed an engaging onboarding video to help new users understand how to enhance their marketing visibility after signing up for the platform. Without a clear walkthrough, new sign-ups were struggling to find value quickly, resulting in early drop-off and low first-week engagement.</p></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">My Role</div><h2>Scripted, produced, and delivered end-to-end.</h2><p>I scripted and edited a walkthrough-style explainer video using Canva and ScreenFlow for motion graphics, voiceover, and brand-consistent visuals. I collaborated with the product and marketing teams throughout the process to ensure every step of the walkthrough matched the actual product experience and reflected the brand accurately.</p><p>The result was a polished, professional video that could be embedded directly in the onboarding flow and serve as a first impression for every new user.</p><div class="tools-row"><span class="tool-tag">ScreenFlow</span><span class="tool-tag">Canva</span></div></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">The Result</div><h2>Measurable lift in first-week engagement.</h2><p>The video was embedded in the onboarding flow and drove a noticeable increase in first-week engagement metrics among new sign-ups. <a href="https://netklik.mykajabi.com/gracias-aplicacion-9-min" target="_blank" class="ext-link">Watch the Video →</a></p></div></div>
+<div class="img-section"><div class="img-wrap reveal"><img src="[YOUR-IMAGE-URL]" alt="NetKlik Video" /></div><div class="img-caption">Screenshot from the NetKlik onboarding explainer video embedded in the new user flow.</div></div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('ticket-utilization');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">Ticket Utilization Project →</div></a></div>
+</div>
+
+<div id="page-ticket-utilization" class="page" style="display:none">
+<div class="cs-hero"><div class="cs-hero-bg">TICKET OPS</div><div class="cs-eyebrow">Audience Engagement & Growth</div><h1 class="cs-title">Intern Ticket<br><em>Utilization Project</em></h1><div class="cs-meta-row"><div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Miami HEAT</div></div><div class="cs-meta"><div class="cs-meta-label">Team</div><div class="cs-meta-value">8 cross-functional interns</div></div><div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Asana · Smartsheet · Canva · Excel</div></div></div></div>
+<div class="stat-bar"><div class="stat-item"><div class="stat-num">[#]</div><div class="stat-label">In additional game-day revenue projected</div></div><div class="stat-item"><div class="stat-num">8</div><div class="stat-label">Cross-functional interns on the team</div></div><div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Formal proposals presented to exec stakeholders</div></div><div class="stat-item"><div class="stat-num">Data</div><div class="stat-label">Driven recommendations for system change</div></div></div>
+<div class="cs-body"><div class="cs-section reveal"><div class="cs-section-tag">The Situation</div><h2>Untapped game-day revenue hiding in plain sight.</h2><p>The Miami HEAT sought new strategies to improve internal season ticket utilization and unlock untapped game-day revenue across departments. A significant number of internal season tickets were going unused each game, representing a real revenue gap that, if closed, could have meaningful financial impact across the season.</p></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">My Role</div><h2>Process mapper, gap analyst, and proposal co-lead.</h2><p>As one of 8 cross-functional interns, I helped product manage internal vendor and ticket workflows. We analyzed how CRM systems, Monday.com, Excel, and Microsoft Teams were being used to distribute and track inventory, identifying where tickets were falling through the cracks.</p><p>I co-led efforts to map process gaps, identify systemic inefficiencies, and construct two formal proposals focused on increasing utilization and optimizing internal system flows. Each proposal included specific system enhancements and accountability mechanisms backed by data.</p><div class="tools-row"><span class="tool-tag">Asana</span><span class="tool-tag">Smartsheet</span><span class="tool-tag">Monday.com</span><span class="tool-tag">Excel</span><span class="tool-tag">Canva</span></div></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">The Result</div><h2>[#] in projected revenue. Exec-level presentation.</h2><p>Our project proposed system enhancements projected to help unlock up to [#] in additional game-day revenue. Final proposals were presented directly to executive stakeholders for strategic consideration, a meaningful outcome for an intern team operating with real data on a real business problem.</p></div></div>
+<div class="img-section"><div class="img-grid reveal"><img src="[YOUR-IMAGE-URL]" alt="Ticket Utilization Deck" /><img src="[YOUR-IMAGE-URL]" alt="HEAT Intern Team" /></div><div class="img-caption">HEAT intern team during our final proposal presentation on a [#] season ticket utilization strategy focused on increasing game-day ROI.</div></div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('intranet');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">HEAT Project Intranet →</div></a></div>
+</div>
+
+<div id="page-intranet" class="page" style="display:none">
+<div class="cs-hero"><div class="cs-hero-bg">INTRANET</div><div class="cs-eyebrow">Internal Tools & Enablement</div><h1 class="cs-title">HEAT Project<br><em>Intranet Website</em></h1><div class="cs-meta-row"><div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Miami HEAT</div></div><div class="cs-meta"><div class="cs-meta-label">Platform</div><div class="cs-meta-value">SharePoint / Canva</div></div><div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Canva · SharePoint · Smartsheet</div></div></div></div>
+<div class="stat-bar"><div class="stat-item"><div class="stat-num">Cross-Dept</div><div class="stat-label">Transparency improved</div></div><div class="stat-item"><div class="stat-num">Adopted</div><div class="stat-label">For end-of-year reporting</div></div><div class="stat-item"><div class="stat-num">Visual</div><div class="stat-label">Dashboard built in Canva</div></div><div class="stat-item"><div class="stat-num">Centralized</div><div class="stat-label">Project updates across all teams</div></div></div>
+<div class="cs-body"><div class="cs-section reveal"><div class="cs-section-tag">The Situation</div><h2>Project updates scattered. Leadership visibility low.</h2><p>The Miami HEAT's internal project management team needed a structured way to communicate project updates across their intranet site. Updates were being shared inconsistently across emails and one-off documents, making it hard for leadership to get a clear picture of what was happening across departments and where projects stood.</p></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">My Role</div><h2>Built the internal site from structure to launch.</h2><p>I created a SharePoint-style internal website to house key project updates, team timelines, SOPs, and success stories. I organized content by department, built a visual dashboard using Canva and Smartsheet assets, and designed the information architecture so any stakeholder could quickly find what they needed.</p><p>I also developed a consistent content template so future updates could be added easily without rebuilding the layout each time.</p><div class="tools-row"><span class="tool-tag">Canva</span><span class="tool-tag">SharePoint</span><span class="tool-tag">Smartsheet</span></div></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">The Result</div><h2>Leadership visibility up. End-of-year reviews powered by the site.</h2><p>Improved visibility for leadership, increased cross-departmental transparency, and the site was formally adopted for end-of-year project reporting, one of the clearest signals that a tool has actually become embedded in how an organization works.</p></div></div>
+<div class="img-section"><div class="img-wrap reveal"><img src="[YOUR-IMAGE-URL]" alt="HEAT Intranet" /></div><div class="img-caption">Internal intranet homepage housing project updates, team resources, and initiative summaries, centralizing HEAT project management across departments.</div></div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('project-intake');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">Project Intake System →</div></a></div>
+</div>
+
+<div id="page-project-intake" class="page" style="display:none">
+<div class="cs-hero"><div class="cs-hero-bg">INTAKE</div><div class="cs-eyebrow">Internal Tools & Enablement</div><h1 class="cs-title">Project Intake &<br><em>Prioritization System</em></h1><div class="cs-meta-row"><div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Miami HEAT</div></div><div class="cs-meta"><div class="cs-meta-label">Platform</div><div class="cs-meta-value">Smartsheet</div></div><div class="cs-meta"><div class="cs-meta-label">Scope</div><div class="cs-meta-value">[#] departments</div></div></div></div>
+<div class="stat-bar"><div class="stat-item"><div class="stat-num">[#]</div><div class="stat-label">Departments standardized on one system</div></div><div class="stat-item"><div class="stat-num">Auto-Scored</div><div class="stat-label">Requests by urgency & impact</div></div><div class="stat-item"><div class="stat-num">Reduced</div><div class="stat-label">Ad-hoc requests and approval confusion</div></div><div class="stat-item"><div class="stat-num">Used</div><div class="stat-label">In leadership feasibility reviews</div></div></div>
+<div class="cs-body"><div class="cs-section reveal"><div class="cs-section-tag">The Situation</div><h2>[#] departments, no consistent way to request work.</h2><p>The Miami HEAT needed a scalable and consistent method for departments to propose, evaluate, and prioritize internal projects, especially during the busy offseason. Without a standard process, requests came in through email, informal conversations, and one-off spreadsheets. High-impact work competed with low-priority asks for the same resources, and leadership had no reliable way to evaluate feasibility or scheduling.</p></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">My Role</div><h2>Designed the system, built the logic, trained the team.</h2><p>I built a custom Smartsheet intake form and dashboard that allowed any department to submit new projects with standardized fields covering scope, timeline, cost, and business impact. I designed automated logic to score each incoming request based on urgency, need, and resource requirements, surfacing the highest-priority work without manual review for every submission.</p><p>I worked with stakeholders across departments to fine-tune the system around real use cases, then ensured cross-functional transparency so everyone could see where their requests stood.</p><div class="tools-row"><span class="tool-tag">Smartsheet</span></div></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">The Result</div><h2>Standardized intake. Smarter prioritization.</h2><p>Standardized how [#] departments submitted requests, significantly reducing ad-hoc asks and approval confusion. The system was used in leadership reviews to evaluate project feasibility and scheduling, making it easier to have data-backed conversations about what to prioritize and when.</p></div></div>
+<div class="img-section"><div class="img-wrap reveal"><img src="[YOUR-IMAGE-URL]" alt="Project Intake System" /></div><div class="img-caption">Smartsheet project intake layout tracking proposals, timelines, budgets, and automated task alerts across [#] departments.</div></div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('sponsorship');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">Sponsorship Asset Website →</div></a></div>
+</div>
+
+<div id="page-sponsorship" class="page" style="display:none">
+<div class="cs-hero"><div class="cs-hero-bg">PARTNERSHIPS</div><div class="cs-eyebrow">Internal Tools & Enablement</div><h1 class="cs-title">HEAT Sponsorship<br><em>Asset Website</em></h1><div class="cs-meta-row"><div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Miami HEAT</div></div><div class="cs-meta"><div class="cs-meta-label">Platform</div><div class="cs-meta-value">Canva · SharePoint</div></div><div class="cs-meta"><div class="cs-meta-label">Audience</div><div class="cs-meta-value">Internal sales & marketing</div></div></div></div>
+<div class="stat-bar"><div class="stat-item"><div class="stat-num">Go-To</div><div class="stat-label">Resource for partnership planning</div></div><div class="stat-item"><div class="stat-num">Visual</div><div class="stat-label">Polished mockups and specs</div></div><div class="stat-item"><div class="stat-num">Organized</div><div class="stat-label">Assets by category: LED, courtside & more</div></div><div class="stat-item"><div class="stat-num">Used</div><div class="stat-label">In pitch preparation</div></div></div>
+<div class="cs-body"><div class="cs-section reveal"><div class="cs-section-tag">The Situation</div><h2>Partnership inventory was hard to find and harder to sell from.</h2><p>The HEAT sponsorship team needed a streamlined way to present all available inventory and branding opportunities to internal stakeholders and potential partners. Assets were scattered across documents and drives, making it time-consuming to prepare for partner pitches and easy to miss available opportunities.</p></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">My Role</div><h2>Built the internal hub from scratch.</h2><p>I created a web-based internal sponsorship hub using Canva, SharePoint, and branded visuals. The site organized assets by category including LED boards, activations, and courtside placements, with mockups, downloadable specs, and clear visual presentation for each.</p><p>I worked closely with the Partnership Marketing team to ensure accuracy and brand alignment throughout, building something that sales and marketing could actually rely on during live pitch preparation.</p><div class="tools-row"><span class="tool-tag">Canva</span><span class="tool-tag">SharePoint</span></div></div><div class="cs-divider"></div><div class="cs-section reveal"><div class="cs-section-tag">The Result</div><h2>A go-to resource used in every pitch.</h2><p>The site became the go-to resource for partnership planning, simplifying asset access for both sales and marketing and reducing the prep time needed for partner pitches. It received positive feedback for clarity and visual polish, and was actively used in pitch preparation across the sponsorship team.</p></div></div>
+<div class="img-section"><div class="img-grid-3 reveal"><img src="[YOUR-IMAGE-URL]" alt="Sponsorship Asset 1" /><img src="[YOUR-IMAGE-URL]" alt="Sponsorship Asset 2" /><img src="[YOUR-IMAGE-URL]" alt="Sponsorship Asset 3" /></div><div class="img-caption">Branded arena assets organized into the HEAT internal sponsorship asset library, categorized for quick reference during pitch prep.</div></div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('home');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">Back to All Work →</div></a></div>
+</div>
+
+
+<!-- SCG SALES OPS -->
+<div id="page-scg-sales-ops" class="page" style="display:none">
+<div class="cs-hero">
+  <div class="cs-hero-bg">SALES OPS</div>
+  <div class="cs-eyebrow">Sales Operations & Order Management</div>
+  <h1 class="cs-title">Client Order<br><em>Execution</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Team SCG</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2025–2026</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Sales Operations Coordinator</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">CommonSKU · Syncore</div></div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">$70K+</div><div class="stat-label">In billed invoices supported</div></div>
+  <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">Weekly orders managed simultaneously</div></div>
+  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Major client accounts: Southern Glazer's, Zillow & LIV Golf</div></div>
+  <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Missed fulfillment deadlines</div></div>
+</div>
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>High-volume accounts, zero margin for error.</h2>
+    <p>Southern Glazer's Wine & Spirits, Zillow, and LIV Golf were running active branded merchandise programs through Team SCG. Each account required precise coordination across suppliers, creative teams, and client contacts to keep orders moving from quote to delivery without falling through the cracks.</p>
+    <p>With 30+ active orders running simultaneously, the workflow demanded structure, consistent follow-through, and someone who could hold multiple moving parts together across accounts at the same time.</p>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>Owned the order lifecycle from first quote to final delivery.</h2>
+    <p>I built and managed 30+ weekly sales orders, work orders, and client-facing presentations through CommonSKU and Syncore. I served as the connective layer between suppliers, graphics, customer success, and client contacts, tracking timelines, aligning deliverables, and communicating status proactively at every stage.</p>
+    <p>My focus was on making sure nothing slipped. That meant coordinating supplier quotes, flagging timeline risks early, aligning internal creative with client expectations, and troubleshooting issues before they became fulfillment delays. Every active account had a moving set of variables and my job was to keep all of them in view.</p>
+    <div class="tools-row"><span class="tool-tag">CommonSKU</span><span class="tool-tag">Syncore</span></div>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>$70K+ in billed invoices. On-time delivery across major accounts.</h2>
+    <p>My work supported $70K+ in billed invoices across key client accounts, contributing to accurate, on-time product delivery and seamless campaign execution for some of the agency's highest-profile clients. The order management process I maintained helped streamline supplier communication and improve turnaround time across all active accounts.</p>
+  </div>
+</div>
+<div class="img-section">
+  <div class="img-grid reveal">
+    <img src="[YOUR-IMAGE-URL]" alt="CommonSKU Production Management Interface" />
+    <img src="[YOUR-IMAGE-URL]" alt="CommonSKU Dashboard" />
+  </div>
+  <div class="img-caption">CommonSKU production management and dashboard views, the platform used to build and track 30+ weekly sales orders and work orders across client accounts.</div>
+</div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('scg-warehouse');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">Warehouse Operations & Inventory Systems →</div></a></div>
+</div>
+
+<!-- SCG WAREHOUSE -->
+<div id="page-scg-warehouse" class="page" style="display:none">
+<div class="cs-hero">
+  <div class="cs-hero-bg">WAREHOUSE</div>
+  <div class="cs-eyebrow">Inventory Systems & Warehouse Ops</div>
+  <h1 class="cs-title">Warehouse Operations<br><em>& Inventory Systems</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Team SCG</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2025–2026</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Warehouse & Inventory Ops</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Syncore · Clear Spider</div></div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">$10M+</div><div class="stat-label">In active warehouse inventory supported</div></div>
+  <div class="stat-item"><div class="stat-num">[#]</div><div class="stat-label">SKUs validated and reconciled</div></div>
+  <div class="stat-item"><div class="stat-num">Real-Time</div><div class="stat-label">WMS accuracy maintained across stock levels</div></div>
+  <div class="stat-item"><div class="stat-num">Zero</div><div class="stat-label">Data gaps left unresolved</div></div>
+</div>
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>$10M+ in inventory with no room for data gaps.</h2>
+    <p>Team SCG's fulfillment operation was managing over $10M in branded merchandise inventory across active client accounts. Accurate pallet-level stock visibility was critical to ensuring orders moved through production and distribution without errors or delays.</p>
+    <p>Discrepancies between physical inventory and system records were creating operational friction that slowed fulfillment and risked client delivery timelines. The warehouse management system needed to reflect reality, not just what was last entered.</p>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>Brought the WMS data in line with what was actually on the shelf.</h2>
+    <p>I worked closely with the operations team to organize pallet-level inventory in Clear Spider, validating stock counts across [#] SKUs and reconciling discrepancies between system records and on-hand inventory. My focus was on making sure the fulfillment team always had a reliable, real-time picture of what was actually available.</p>
+    <p>This included organizing pallet and location data, validating quantity counts, updating warehouse management system records, and supporting smoother handoff between warehouse and client order workflows. Every discrepancy I caught was one fewer delay downstream.</p>
+    <div class="tools-row"><span class="tool-tag">Syncore</span><span class="tool-tag">Clear Spider</span></div>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>Cleaner data. Faster fulfillment. Fewer surprises.</h2>
+    <p>By ensuring WMS data matched real-time stock levels across [#] SKUs and $10M+ in active inventory, this work reduced operational friction and helped fulfillment teams execute client orders with greater confidence. The improved data accuracy created a more reliable foundation for order decisions and reduced the last-minute scrambles that come with inventory blind spots.</p>
+  </div>
+</div>
+<div class="img-section">
+  <div class="img-grid reveal">
+    <img src="[YOUR-IMAGE-URL]" alt="Inventory & Supplier Management" />
+    <img src="[YOUR-IMAGE-URL]" alt="Inventory Reports & Analytics" />
+  </div>
+  <div class="img-caption">Warehouse and inventory management platform views representative of the Clear Spider and Syncore workflows used to validate [#] SKUs and maintain real-time stock accuracy across $10M+ in active inventory.</div>
+</div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('scg-proposals');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">Client Proposal & Mockup Strategy →</div></a></div>
+</div>
+
+<!-- SCG PROPOSALS -->
+<div id="page-scg-proposals" class="page" style="display:none">
+<div class="cs-hero">
+  <div class="cs-hero-bg">PROPOSALS</div>
+  <div class="cs-eyebrow">Client Strategy & Visual Storytelling</div>
+  <h1 class="cs-title">Client Proposal &<br><em>Mockup Strategy</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Team SCG</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2025–2026</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Proposal Strategist</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Canva</div></div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">$100K</div><div class="stat-label">Contract closed from a single proposal</div></div>
+  <div class="stat-item"><div class="stat-num">Multi</div><div class="stat-label">Client verticals: HR, gifting, events & more</div></div>
+  <div class="stat-item"><div class="stat-num">Visual</div><div class="stat-label">Mockups built for every proposal</div></div>
+  <div class="stat-item"><div class="stat-num">End-to-End</div><div class="stat-label">Research, design & delivery</div></div>
+</div>
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>Clients needed more than a product list. They needed a vision.</h2>
+    <p>Team SCG clients across HR, gifting, and branded events programs needed tailored merchandise proposals that could do more than list products. They needed to communicate a complete program vision. A generic deck wouldn't move a decision-maker. These proposals had to combine curated product strategy, polished mockups, and program-specific storytelling to earn buy-in.</p>
+    <p>The challenge was translating a client's business goals into something they could actually see and say yes to, all while coordinating product research, pricing, and visual design at the same time.</p>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>Turned business goals into proposals clients said yes to.</h2>
+    <p>I developed client-facing presentation decks in Canva that combined curated product recommendations, custom mockups, pricing structure, and branded visual concepts tailored to each program. Whether the initiative was employee onboarding kits, executive gifts, or branded event activations, I translated client goals into a compelling visual and strategic case.</p>
+    <p>Each deck required product research, supplier coordination, and design execution working in parallel. I owned the full process from brief to delivery, ensuring every proposal felt like it was built specifically for that client and their goals.</p>
+    <div class="tools-row"><span class="tool-tag">Canva</span></div>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>One deck closed a $100,000 contract.</h2>
+    <p>One of these presentations directly contributed to securing a $100,000 client contract, demonstrating that strategic proposal development and client-focused storytelling can have direct, measurable commercial impact. The work reinforced that how you present an idea is just as important as the idea itself.</p>
+  </div>
+</div>
+<div class="img-section">
+  <div class="img-grid-3 reveal">
+    <img src="[YOUR-IMAGE-URL]" alt="Southern Glazer's New Swag Deck Cover" />
+    <img src="[YOUR-IMAGE-URL]" alt="Southern Glazer's Owala Freesip Mockup" />
+    <img src="[YOUR-IMAGE-URL]" alt="Southern Glazer's BrüMate Rotera Mockup" />
+  </div>
+  <div class="img-caption">Slides from the Southern Glazer's Wine & Spirits New Year merchandise proposal, built in Canva with custom branded product mockups across drinkware categories.</div>
+</div>
+<div class="cs-footer"><a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a><a href="#" onclick="showPage('home');return false;" class="cs-footer-next"><div class="cs-footer-next-label">Next Case Study</div><div class="cs-footer-next-title">Back to All Work →</div></a></div>
+</div>
+
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.addEventListener('mouseover', e => {
+  if (e.target.matches('a, button, .work-card, .focus-card, .review-card, .metric-cell')) cursor.classList.add('expand');
+  else cursor.classList.remove('expand');
+});
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+let currentPage = 'home';
+
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+  const target = document.getElementById('page-' + pageId);
+  if (target) {
+    target.style.display = 'block';
+    currentPage = pageId;
+    window.scrollTo(0, 0);
+    // Nav swap
+    const mainLinks = document.getElementById('main-nav-links');
+    const backBtn = document.getElementById('nav-back');
+    if (pageId === 'home') {
+      mainLinks.style.display = 'flex';
+      backBtn.style.display = 'none';
+    } else {
+      mainLinks.style.display = 'none';
+      backBtn.style.display = 'flex';
+    }
+    // Trigger reveals
+    setTimeout(() => initReveals(target), 50);
+  }
+}
+
+function submitContactForm() {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const subject = document.getElementById('cf-subject').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+  if (!name || !email || !message) {
+    alert('Please fill in your name, email, and message.');
+    return;
+  }
+  const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+  const sub = encodeURIComponent(subject || 'Portfolio Inquiry from ' + name);
+  window.location.href = 'mailto:alankatz5000@gmail.com?subject=' + sub + '&body=' + body;
+  document.getElementById('cf-success').style.display = 'block';
+  document.getElementById('cf-name').value = '';
+  document.getElementById('cf-email').value = '';
+  document.getElementById('cf-subject').value = '';
+  document.getElementById('cf-message').value = '';
+}
+
+function scrollToSection(id) {
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, 50);
+}
+
+function initReveals(container) {
+  const reveals = container.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => {
+    el.classList.remove('visible');
+    observer.observe(el);
+  });
+}
+
+// Mobile nav
+function toggleMobileNav() {
+  const links = document.getElementById('main-nav-links');
+  const burger = document.getElementById('nav-hamburger');
+  links.classList.toggle('open');
+  burger.classList.toggle('open');
+}
+function closeMobileNav() {
+  const links = document.getElementById('main-nav-links');
+  const burger = document.getElementById('nav-hamburger');
+  links.classList.remove('open');
+  burger.classList.remove('open');
+}
+function handleNavResize() {
+  const burger = document.getElementById('nav-hamburger');
+  const links = document.getElementById('main-nav-links');
+  if (window.innerWidth <= 768) {
+    burger.style.display = 'flex';
+    if (!links.classList.contains('open')) links.style.display = 'none';
+  } else {
+    burger.style.display = 'none';
+    links.style.display = 'flex';
+    links.classList.remove('open');
+  }
+}
+window.addEventListener('resize', handleNavResize);
+document.addEventListener('DOMContentLoaded', () => { showPage('home'); handleNavResize(); });
+
+// Handle hero CTA buttons
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-page]');
+  if (btn) showPage(btn.dataset.page);
+});
+</script>
+</body>
+</html>
