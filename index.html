@@ -20,15 +20,15 @@ nav.scrolled{background:rgba(245,242,236,.95);backdrop-filter:blur(8px);border-b
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{text-decoration:none;color:var(--ink);font-size:.85rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;position:relative;cursor:pointer}
 .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:var(--accent);transition:width .3s}
-.nav-links a:hover::after{width:[#]}
+.nav-links a:hover::after{width:100%}
 .nav-back{font-size:.85rem;font-weight:500;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:.4rem;border-bottom:1.5px solid transparent;transition:border-color .2s,color .2s;cursor:pointer}
 .nav-back:hover{color:var(--accent);border-color:var(--accent)}
 
 /* HOME PAGE */
 #page-home #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 2.5rem 4rem;position:relative;overflow:hidden;background:var(--paper)}
 .hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-size:clamp(60px,10vw,140px);font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.07);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em}
-.hero-photo{position:absolute;top:60px;right:0;width:42%;height:calc([#] - 60px);object-fit:cover;object-position:top center;mix-blend-mode:multiply}
-.hero-photo-overlay{position:absolute;top:60px;right:0;width:42%;height:calc([#] - 60px);background:linear-gradient(to bottom,var(--paper) 0%,transparent 18%,transparent 50%,var(--paper) [#]),linear-gradient(to right,var(--paper) 0%,transparent 20%),linear-gradient(to left,var(--paper) 0%,transparent 30%)}
+.hero-photo{position:absolute;top:60px;right:0;width:42%;height:calc(100vh - 60px);object-fit:cover;object-position:top center;mix-blend-mode:multiply}
+.hero-photo-overlay{position:absolute;top:60px;right:0;width:42%;height:calc(100vh - 60px);background:linear-gradient(to bottom,var(--paper) 0%,transparent 18%,transparent 50%,var(--paper) 100%),linear-gradient(to right,var(--paper) 0%,transparent 20%),linear-gradient(to left,var(--paper) 0%,transparent 30%)}
 .hero-eyebrow{font-size:.8rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;opacity:0;transform:translateY(20px);animation:fadeUp .8s .2s forwards}
 .hero-headline{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;max-width:60%;position:relative;z-index:2;opacity:0;transform:translateY(30px);animation:fadeUp .8s .4s forwards}
 .hero-headline em{font-style:italic;font-weight:300;color:var(--accent);font-family:'DM Sans',sans-serif}
@@ -62,7 +62,7 @@ section{padding:6rem 2.5rem}
 .about-body p+p{margin-top:1.25rem}
 .about-body strong{color:var(--paper);font-weight:500}
 .about-photos{display:flex;flex-direction:column;gap:1rem}
-.about-photos img{width:[#];border-radius:8px;object-fit:cover;display:block;filter:grayscale(20%);transition:filter .3s;max-height:480px}
+.about-photos img{width:100%;border-radius:8px;object-fit:cover;display:block;filter:grayscale(20%);transition:filter .3s;max-height:480px}
 .about-photos img:hover{filter:none}
 .about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.5rem}
 .tag{padding:.4rem 1rem;border:1px solid rgba(245,242,236,.2);border-radius:100px;font-size:.8rem;color:rgba(245,242,236,.7)}
@@ -109,7 +109,7 @@ section{padding:6rem 2.5rem}
 .review-quote::before{content:'\201C';font-family:'Syne',sans-serif;font-size:3rem;color:var(--accent);line-height:0;vertical-align:-.8rem;margin-right:.2rem}
 .review-person{display:flex;align-items:center;gap:.75rem}
 .review-avatar{width:46px;height:46px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;color:var(--paper);flex-shrink:0;overflow:hidden}
-.review-avatar img{width:[#];height:[#];object-fit:cover;border-radius:50%}
+.review-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .review-name{font-weight:500;font-size:.9rem}
 .review-title{font-size:.75rem;color:#888;line-height:1.4}
 .review-linkedin{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;color:var(--accent);text-decoration:none;margin-top:.3rem;font-weight:500;opacity:.8;transition:opacity .2s}
@@ -132,12 +132,12 @@ section{padding:6rem 2.5rem}
 .nav-icon:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .nav-icon svg{width:15px;height:15px;fill:currentColor}
 .contact-form-wrap{max-width:540px;margin:2.5rem auto 0;position:relative;z-index:2}
-.contact-form-wrap input,.contact-form-wrap textarea{width:[#];background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);border-radius:10px;padding:.85rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.95rem;color:#fff;outline:none;transition:border-color .2s,background .2s;margin-bottom:.75rem;display:block}
+.contact-form-wrap input,.contact-form-wrap textarea{width:100%;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);border-radius:10px;padding:.85rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.95rem;color:#fff;outline:none;transition:border-color .2s,background .2s;margin-bottom:.75rem;display:block}
 .contact-form-wrap input::placeholder,.contact-form-wrap textarea::placeholder{color:rgba(255,255,255,.55)}
 .contact-form-wrap input:focus,.contact-form-wrap textarea:focus{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.2)}
 .contact-form-wrap textarea{resize:vertical;min-height:120px}
 .contact-form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-.contact-submit{width:[#];padding:1rem;background:#fff;color:var(--accent);border:none;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;transition:transform .2s,background .2s;margin-top:.25rem}
+.contact-submit{width:100%;padding:1rem;background:#fff;color:var(--accent);border:none;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;transition:transform .2s,background .2s;margin-top:.25rem}
 .contact-submit:hover{transform:translateY(-2px);background:var(--ink);color:#fff}
 .contact-success{display:none;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);border-radius:12px;padding:1.5rem;margin-top:.75rem;font-size:.95rem;color:#fff}
 .contact-social-row{display:flex;justify-content:center;gap:1rem;margin-top:2rem;position:relative;z-index:2;flex-wrap:wrap}
@@ -168,7 +168,7 @@ section{padding:6rem 2.5rem}
 .cs-section h2{font-family:'Syne',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.02em;margin-bottom:1.25rem;line-height:1.1}
 .cs-section p{font-size:1.05rem;line-height:1.8;color:#333}
 .cs-section p+p{margin-top:1rem}
-.cs-divider{width:[#];height:1px;background:var(--border);margin:4rem 0}
+.cs-divider{width:100%;height:1px;background:var(--border);margin:4rem 0}
 .tools-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
 .tool-tag{padding:.45rem 1rem;background:var(--ink);color:var(--paper);border-radius:100px;font-size:.8rem;font-weight:500}
 .gallery-section{background:var(--ink);padding:4rem 2.5rem}
@@ -177,15 +177,15 @@ section{padding:6rem 2.5rem}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:820px;margin:0 auto}
 .gallery-item{border-radius:10px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);transition:transform .3s,border-color .3s;display:block;text-decoration:none}
 .gallery-item:hover{transform:translateY(-4px);border-color:rgba(232,93,38,.4)}
-.gallery-item img{width:[#];display:block;object-fit:contain;aspect-ratio:1/1;background:#fff;padding:.5rem}
+.gallery-item img{width:100%;display:block;object-fit:contain;aspect-ratio:1/1;background:#fff;padding:.5rem}
 .gallery-caption{font-size:.7rem;color:rgba(245,242,236,.4);padding:.6rem .8rem}
 .img-section{background:var(--ink);padding:4rem 2.5rem}
 .img-wrap{max-width:820px;margin:0 auto}
-.img-wrap img{display:block;width:[#];border-radius:10px;object-fit:contain;background:#111}
+.img-wrap img{display:block;width:100%;border-radius:10px;object-fit:contain;background:#111}
 .img-grid{max-width:820px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.img-grid img{width:[#];border-radius:10px;object-fit:contain;background:#111;display:block}
+.img-grid img{width:100%;border-radius:10px;object-fit:contain;background:#111;display:block}
 .img-grid-3{max-width:820px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
-.img-grid-3 img{width:[#];border-radius:10px;object-fit:contain;background:#111;display:block}
+.img-grid-3 img{width:100%;border-radius:10px;object-fit:contain;background:#111;display:block}
 .img-caption{max-width:820px;margin:.75rem auto 0;font-size:.8rem;color:rgba(245,242,236,.4);font-style:italic}
 .ext-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.5rem;padding:.7rem 1.5rem;background:var(--accent);color:#fff;border-radius:100px;font-size:.85rem;font-weight:500;text-decoration:none;transition:opacity .2s}
 .ext-link:hover{opacity:.85}
@@ -203,7 +203,7 @@ section{padding:6rem 2.5rem}
 
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes scrollPulse{0%,[#]{opacity:1}50%{opacity:.3}}
+@keyframes scrollPulse{0%,100%{opacity:1}50%{opacity:.3}}
 
 @media(max-width:768px){
   /* NAV */
@@ -219,8 +219,8 @@ section{padding:6rem 2.5rem}
 
   /* HERO */
   #page-home #hero{padding:5rem 1.5rem 4rem}
-  .hero-headline{max-width:[#];font-size:clamp(2.4rem,10vw,4rem)}
-  .hero-sub{max-width:[#];font-size:.95rem}
+  .hero-headline{max-width:100%;font-size:clamp(2.4rem,10vw,4rem)}
+  .hero-sub{max-width:100%;font-size:.95rem}
   .hero-photo,.hero-photo-overlay{display:none}
   .hero-stats-row{position:static;margin-top:2.5rem;justify-content:flex-start;gap:1.5rem;flex-wrap:wrap}
   .hero-stat-num{font-size:1.5rem}
@@ -375,6 +375,8 @@ section{padding:6rem 2.5rem}
         <span class="tag">HubSpot</span>
         <span class="tag">LinkedIn Sales Navigator</span>
         <span class="tag">SalesReach.io</span>
+        <span class="tag">Earned Media Valuation (EMV)</span>
+        <span class="tag">Canva</span>
         <span class="tag">Contract Negotiation</span>
         <span class="tag">Pipeline Management</span>
         <span class="tag">Cross-Functional Collaboration</span>
@@ -433,6 +435,7 @@ section{padding:6rem 2.5rem}
       <div class="focus-title">Writing & Communication</div>
       <ul class="focus-list">
         <li>Sports & Managing Editor, The Record (St. John's University)</li>
+        <li>Freelance Writer, Mankato Area Foundation</li>
         <li>Athlete Correspondent, UNRL</li>
         <li>Summa Cum Laude, Global Business Leadership + Communication</li>
       </ul>
@@ -444,7 +447,7 @@ section{padding:6rem 2.5rem}
 <section id="work">
   <div class="section-label">Work</div>
   <h2 class="section-title reveal">Real deals, real systems, real results.</h2>
-  <p class="work-intro reveal">Behind every closed deal is a system: pipeline discipline, relationship management, and knowing when to build something new instead of following a playbook. Here's a closer look at three projects that shaped how I sell.</p>
+  <p class="work-intro reveal">Behind every closed deal is a system: pipeline discipline, relationship management, and knowing when to build something new instead of following a playbook. Here's a closer look at a few projects that shaped how I sell.</p>
 
   <div class="work-categories">
 
@@ -481,14 +484,26 @@ section{padding:6rem 2.5rem}
       </div>
     </div>
 
+    <div class="work-category reveal">
+      <div class="work-category-title">Deal Execution & Project Leadership</div>
+      <div class="work-items">
+        <a href="#" onclick="showPage('sony-cameras');return false;" class="work-card">
+          <span class="work-card-emoji">🎥</span>
+          <div class="work-card-title">Closing & Delivering Stream Hatchet's Largest Deal</div>
+          <div class="work-card-desc">$60K custom research engagement with Sony, sourced, closed, and executed solo end-to-end</div>
+          <div class="work-card-tools"><span class="work-tool">Deal Closing</span><span class="work-tool">Project Management</span></div>
+          <span class="work-card-link">Case Study →</span>
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
-
 <!-- REVIEWS -->
 <section id="reviews">
   <div class="section-label">Reviews</div>
   <h2 class="section-title reveal">What people say.</h2>
-  <p class="reviews-intro reveal">Add a few lines from managers, clients, or colleagues you've worked with — specific, outcome-focused quotes work best.</p>
+  <p class="reviews-intro reveal">Colleagues and managers I've worked with across the sports, esports, and SaaS industries.</p>
 
   <div class="reviews-grid">
 
@@ -777,6 +792,60 @@ section{padding:6rem 2.5rem}
     <div class="cs-section-tag">The Result</div>
     <h2>1 customer to 11 — proof I can build a motion from zero.</h2>
     <p>I grew Blinklet from 1 customer to 11 over the course of my time at Blinkfire, entirely as the individual owner of that motion. It's a smaller number than my headline sponsorship deals, but it's the clearest proof point that I can build a sales motion from zero, not just execute one that already exists.</p>
+  </div>
+</div>
+<div class="cs-footer">
+  <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
+  <a href="#" onclick="showPage('sony-cameras');return false;" class="cs-footer-next">
+    <div class="cs-footer-next-label">Next Case Study</div>
+    <div class="cs-footer-next-title">Closing Stream Hatchet's Largest Deal →</div>
+  </a>
+</div>
+</div>
+
+<div id="page-sony-cameras" class="page" style="display:none">
+<div class="cs-hero">
+  <div class="cs-hero-bg">SONY</div>
+  <div class="cs-eyebrow">Deal Execution & Project Leadership</div>
+  <h1 class="cs-title">Closing & Delivering<br><em>Stream Hatchet's Largest Deal</em></h1>
+  <div class="cs-meta-row">
+    <div class="cs-meta"><div class="cs-meta-label">Company</div><div class="cs-meta-value">Stream Hatchet</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Client</div><div class="cs-meta-value">Sony — Gaming & Strategic Partnerships</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Deal Lead & Project Owner</div></div>
+    <div class="cs-meta"><div class="cs-meta-label">Tools</div><div class="cs-meta-value">Cross-Functional Project Management</div></div>
+  </div>
+</div>
+<div class="stat-bar">
+  <div class="stat-item"><div class="stat-num">$60K</div><div class="stat-label">Stream Hatchet's largest-ever consulting deal</div></div>
+  <div class="stat-item"><div class="stat-num">Day 2</div><div class="stat-label">On the job when the relationship started</div></div>
+  <div class="stat-item"><div class="stat-num">~160pg</div><div class="stat-label">Final deliverable presented to Sony execs</div></div>
+  <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Internal teams coordinated to deliver it</div></div>
+</div>
+<div class="cs-body">
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Situation</div>
+    <h2>A deal that started on day two, for something we'd never sold before.</h2>
+    <p>Two days into my role at Stream Hatchet, I flew to TwitchCon San Diego 2024 and met Daniel Steingrimsson, Senior Business Development for Gaming & Strategic Partnerships at Sony. Sony wanted a custom market sizing project to better understand the live streaming market and where their brand fit within it — a request that didn't map to anything Stream Hatchet had sold before.</p>
+    <p>It took about three months of relationship-building and scoping to get the deal signed. When it closed at $60K, it became Stream Hatchet's largest consulting engagement to date. Then came the harder part: Stream Hatchet's infrastructure was built for recurring ARR contracts supported by a customer success team, not a one-off custom research project. There was no existing process for actually delivering something like this.</p>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">My Role</div>
+    <h2>No playbook existed, so I built one.</h2>
+    <p>I owned the project end-to-end: scoping the deliverable with Sony, closing the deal, then running project management, execution, delivery, and the final presentation myself. That meant pulling together a working team across marketing, customer success, data analysts, engineers, and designers — a group that didn't normally work together on a single deliverable — and keeping the project moving without an existing process to fall back on.</p>
+    <p>The final product was a roughly 160-page presentation breaking down the scale and structure of the live streaming and gaming market, which I personally presented to senior Sony executives based in Tokyo, entirely over video call.</p>
+    <div class="tools-row">
+      <span class="tool-tag">Deal Closing</span>
+      <span class="tool-tag">Project Management</span>
+      <span class="tool-tag">Cross-Functional Leadership</span>
+      <span class="tool-tag">Executive Presentation</span>
+    </div>
+  </div>
+  <div class="cs-divider"></div>
+  <div class="cs-section reveal">
+    <div class="cs-section-tag">The Result</div>
+    <h2>Glowing feedback, and a repeatable model for what came next.</h2>
+    <p>The project landed. Sony's team gave glowing feedback, with several executives saying they hadn't grasped the true scale of the live streaming and gaming industry — or how relevant their own brand already was within it — until seeing the data laid out. Beyond the revenue, the deal proved out a repeatable model for how Stream Hatchet could scope, sell, and deliver custom one-off engagements going forward, work that started with a conversation on my second day on the job.</p>
   </div>
 </div>
 <div class="cs-footer">
