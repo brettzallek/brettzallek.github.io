@@ -56,10 +56,11 @@ section{padding:6rem 2.5rem}
 .section-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:800;line-height:1.05;letter-spacing:-.025em;margin-bottom:1.5rem}
 .logos-section{background:var(--ink);padding:3.5rem 2.5rem}
 .logos-label{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,242,236,.4);margin-bottom:2rem;text-align:center}
-.logos-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:2.5rem;max-width:1300px;margin:0 auto;align-items:center}
-.logo-item{display:flex;align-items:center;justify-content:center;height:70px}
-.logo-item img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(100%);opacity:.6;transition:filter .25s,opacity .25s}
-.logo-item img:hover{filter:grayscale(0%);opacity:1}
+.logos-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem;max-width:1300px;margin:0 auto;align-items:center}
+.logo-item{display:flex;align-items:center;justify-content:center;height:64px;background:rgba(245,242,236,.92);border-radius:10px;padding:.6rem 1.1rem;box-sizing:border-box;opacity:.8;transition:opacity .25s,transform .2s}
+.logo-item:hover{opacity:1;transform:translateY(-2px)}
+.logo-item img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(100%);transition:filter .25s}
+.logo-item:hover img{filter:grayscale(0%)}
 #about{background:var(--ink);color:var(--paper)}
 #about .section-label{color:#2563eb}
 #about .section-label::before{background:#2563eb}
@@ -287,8 +288,8 @@ section{padding:6rem 2.5rem}
 
   /* LOGOS */
   .logos-section{padding:2.5rem 1.5rem}
-  .logos-grid{grid-template-columns:repeat(3,1fr);gap:2rem}
-  .logo-item{height:48px}
+  .logos-grid{grid-template-columns:repeat(3,1fr);gap:1rem}
+  .logo-item{height:48px;padding:.5rem .85rem}
 }
 
 .certs-grid{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:2.5rem}
@@ -368,18 +369,18 @@ section{padding:6rem 2.5rem}
 <div class="logos-section">
   <div class="logos-label">Clients & Partners</div>
   <div class="logos-grid">
-    <div class="logo-item"><img src="images/logo-expedia.png" alt="Expedia" onerror="this.style.display='none'" /></div>
-    <div class="logo-item"><img src="images/logo-100thieves.png" alt="100 Thieves" onerror="this.style.display='none'" /></div>
     <div class="logo-item"><img src="images/logo-mercedes-f1.png" alt="Mercedes AMG Petronas F1 Team" onerror="this.style.display='none'" /></div>
-    <div class="logo-item"><img src="images/logo-optic.png" alt="OpTic Gaming" onerror="this.style.display='none'" /></div>
+    <div class="logo-item"><img src="images/logo-sony.png" alt="Sony" onerror="this.style.display='none'" /></div>
     <div class="logo-item"><img src="images/logo-verizon.png" alt="Verizon" onerror="this.style.display='none'" /></div>
     <div class="logo-item"><img src="images/logo-nascar.png" alt="NASCAR" onerror="this.style.display='none'" /></div>
     <div class="logo-item"><img src="images/logo-indycar.png" alt="INDYCAR" onerror="this.style.display='none'" /></div>
+    <div class="logo-item"><img src="images/logo-usaa.png" alt="USAA" onerror="this.style.display='none'" /></div>
+    <div class="logo-item"><img src="images/logo-100thieves.png" alt="100 Thieves" onerror="this.style.display='none'" /></div>
+    <div class="logo-item"><img src="images/logo-optic.png" alt="OpTic Gaming" onerror="this.style.display='none'" /></div>
     <div class="logo-item"><img src="images/logo-faze.png" alt="FaZe Clan" onerror="this.style.display='none'" /></div>
-    <div class="logo-item"><img src="images/logo-sony.png" alt="Sony" onerror="this.style.display='none'" /></div>
     <div class="logo-item"><img src="images/logo-tsm.png" alt="TSM" onerror="this.style.display='none'" /></div>
     <div class="logo-item"><img src="images/logo-uta.png" alt="United Talent Agency" onerror="this.style.display='none'" /></div>
-    <div class="logo-item"><img src="images/logo-usaa.png" alt="USAA" onerror="this.style.display='none'" /></div>
+    <div class="logo-item"><img src="images/logo-expedia.png" alt="Expedia" onerror="this.style.display='none'" /></div>
     <div class="logo-item"><img src="images/logo-lexus.png" alt="Lexus" onerror="this.style.display='none'" /></div>
     <div class="logo-item"><img src="images/logo-ford.png" alt="Ford" onerror="this.style.display='none'" /></div>
     <div class="logo-item"><img src="images/logo-ubisoft.png" alt="Ubisoft" onerror="this.style.display='none'" /></div>
