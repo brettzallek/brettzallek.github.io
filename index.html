@@ -69,7 +69,7 @@ section{padding:6rem 2.5rem}
 .about-body p+p{margin-top:1.25rem}
 .about-body strong{color:var(--paper);font-weight:500}
 .about-photos{display:flex;flex-direction:column;gap:1rem}
-.about-photos img{width:100%;border-radius:8px;object-fit:cover;display:block;filter:grayscale(20%);transition:filter .3s;max-height:480px}
+.about-photos img{width:100%;border-radius:8px;object-fit:cover;object-position:center 15%;display:block;filter:grayscale(20%);transition:filter .3s;max-height:380px}
 .about-photos img:hover{filter:none}
 .about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.5rem}
 .tag{padding:.4rem 1rem;border:1px solid rgba(245,242,236,.2);border-radius:100px;font-size:.8rem;color:rgba(245,242,236,.7)}
@@ -191,7 +191,7 @@ section{padding:6rem 2.5rem}
 .img-wrap img{display:block;width:100%;border-radius:10px;object-fit:contain;background:#111}
 .img-grid{max-width:820px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .img-grid img{width:100%;border-radius:10px;object-fit:contain;background:#111;display:block}
-.img-grid-3{max-width:820px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.img-grid-3{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
 .img-grid-3 img{width:100%;border-radius:10px;object-fit:contain;background:#111;display:block}
 .img-caption{max-width:820px;margin:.75rem auto 0;font-size:.8rem;color:rgba(245,242,236,.4);font-style:italic}
 .ext-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.5rem;padding:.7rem 1.5rem;background:var(--accent);color:#fff;border-radius:100px;font-size:.85rem;font-weight:500;text-decoration:none;transition:opacity .2s}
@@ -241,7 +241,7 @@ section{padding:6rem 2.5rem}
   /* ABOUT */
   .about-grid{grid-template-columns:1fr;gap:2rem}
   .about-body{font-size:1rem}
-  .about-photos img{max-height:320px}
+  .about-photos img{max-height:280px}
 
   /* CERTS */
   .certs-grid{flex-direction:column}
@@ -493,7 +493,7 @@ section{padding:6rem 2.5rem}
           <span class="work-card-emoji">🏁</span>
           <div class="work-card-title">Landing Anchor Clients in Esports & Motorsports</div>
           <div class="work-card-desc">$2M+ closed globally with clients including Mercedes F1, INDYCAR, and OpTic Gaming</div>
-          <div class="work-card-tools"><span class="work-tool">Pipedrive</span><span class="work-tool">Sales Navigator</span><span class="work-tool">SalesReach.io</span></div>
+          <div class="work-card-tools"><span class="work-tool">Pipedrive</span><span class="work-tool">Sales Navigator</span><span class="work-tool">Earned Media Valuation (EMV)</span></div>
           <span class="work-card-link">Case Study →</span>
         </a>
         <a href="#" onclick="showPage('blinklet-growth');return false;" class="work-card">
@@ -729,6 +729,19 @@ section{padding:6rem 2.5rem}
 
 </div>
 
+<div class="gallery-section">
+  <div class="gallery-label">Blinkfire Data in Action</div>
+  <div class="img-grid-3">
+    <img src="images/casestudy-blinkfire-mercedes2023.png" alt="Mercedes-AMG Petronas F1 social scorecard, 2023 season" onerror="this.parentElement.style.display='none'" />
+    <img src="images/casestudy-blinkfire-indycar.jpg" alt="Most Engaged Day in INDYCAR History, 1.4 million engagements" onerror="this.parentElement.style.display='none'" />
+    <img src="images/casestudy-blinkfire-f1ranking.png" alt="F1 2024 season total engagement ranking by team" onerror="this.parentElement.style.display='none'" />
+    <img src="images/casestudy-blinkfire-lewis.png" alt="Blinkfire computer vision brand exposure detection example" onerror="this.parentElement.style.display='none'" />
+    <img src="images/casestudy-blinkfire-indycar-announcement.jpg" alt="Blinkfire and INDYCAR partnership announcement" onerror="this.parentElement.style.display='none'" />
+    <img src="images/casestudy-blinkfire-ssg.jpg" alt="Welcome to the Blinkfire Family, SSG" onerror="this.parentElement.style.display='none'" />
+    <img src="images/casestudy-blinkfire-flyquest.jpeg" alt="Blinkfire and FlyQuest partnership announcement" onerror="this.parentElement.style.display='none'" />
+  </div>
+</div>
+
 <!-- FOOTER NAV -->
 <div class="cs-footer">
   <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
@@ -783,6 +796,14 @@ section{padding:6rem 2.5rem}
     <p>The program I built became the foundation of Minnesota Røkkr's ongoing sponsorship business. And my experience using Blinkfire's measurement tools as a customer in this role became part of the story that led me to join Blinkfire directly afterward.</p>
   </div>
 </div>
+
+<div class="img-section">
+  <div class="img-wrap">
+    <img src="images/casestudy-v1-scuf.jpg" alt="Custom MN ROKKR Call of Duty League Scuf controllers" onerror="this.parentElement.parentElement.style.display='none'" />
+  </div>
+  <p class="img-caption">Custom-branded Scuf controllers built as part of the Røkkr's Call of Duty League brand rollout.</p>
+</div>
+
 <div class="cs-footer">
   <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
   <a href="#" onclick="showPage('final-circle');return false;" class="cs-footer-next">
@@ -907,6 +928,15 @@ section{padding:6rem 2.5rem}
     <p>I grew Blinklet from 1 customer to 11 over the course of my time at Blinkfire, entirely as the individual owner of that motion. I can take a product from proof-of-concept stage to the market, continuously improve the service, and turn it into real annual recurring revenue.</p>
   </div>
 </div>
+
+<div class="gallery-section">
+  <div class="gallery-label">New Customers Onboarded</div>
+  <div class="img-grid">
+    <img src="images/casestudy-blinklet-complexity.jpg" alt="Welcome to the Blinkfire Family, Complexity Gaming" onerror="this.parentElement.style.display='none'" />
+    <img src="images/casestudy-blinklet-tsm.jpg" alt="Welcome to the Blinkfire Family, TSM FTX" onerror="this.parentElement.style.display='none'" />
+  </div>
+</div>
+
 <div class="cs-footer">
   <a href="#" onclick="showPage('home');return false;" class="cs-footer-back">← All Case Studies</a>
   <a href="#" onclick="showPage('version1-rokkr');return false;" class="cs-footer-next">
