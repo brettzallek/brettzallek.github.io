@@ -30,7 +30,7 @@ nav.scrolled{background:rgba(245,242,236,.95);backdrop-filter:blur(8px);border-b
 /* HOME PAGE */
 #page-home #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 2.5rem 4rem;position:relative;overflow:hidden;background:var(--paper)}
 .hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-size:clamp(60px,10vw,140px);font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.07);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-.04em}
-.hero-photo{position:absolute;top:60px;right:0;width:42%;height:calc(100vh - 60px);object-fit:cover;object-position:top center;mix-blend-mode:multiply}
+.hero-photo{position:absolute;top:60px;right:0;width:42%;height:calc(100vh - 60px);object-fit:cover;object-position:top 65%;mix-blend-mode:multiply}
 .hero-photo-overlay{position:absolute;top:60px;right:0;width:42%;height:calc(100vh - 60px);background:linear-gradient(to bottom,var(--paper) 0%,transparent 18%,transparent 50%,var(--paper) 100%),linear-gradient(to right,var(--paper) 0%,transparent 20%),linear-gradient(to left,var(--paper) 0%,transparent 30%)}
 .hero-eyebrow{font-size:.8rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;opacity:0;transform:translateY(20px);animation:fadeUp .8s .2s forwards}
 .hero-headline{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;max-width:60%;position:relative;z-index:2;opacity:0;transform:translateY(30px);animation:fadeUp .8s .4s forwards}
@@ -53,7 +53,7 @@ nav.scrolled{background:rgba(245,242,236,.95);backdrop-filter:blur(8px);border-b
 .marquee-inner{display:inline-flex;animation:marquee 20s linear infinite}
 .marquee-inner span{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;padding:0 2rem}
 .marquee-dot{opacity:.5}
-section{padding:6rem 2.5rem}
+section{padding:4.25rem 2.5rem}
 .section-label{font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
 .section-label::before{content:'';display:block;width:30px;height:1.5px;background:var(--accent)}
 .section-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:800;line-height:1.05;letter-spacing:-.025em;margin-bottom:1.5rem}
@@ -67,7 +67,7 @@ section{padding:6rem 2.5rem}
 #about{background:var(--ink);color:var(--paper)}
 #about .section-label{color:#2563eb}
 #about .section-label::before{background:#2563eb}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:4rem}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:2.5rem}
 .about-body{font-size:1.15rem;line-height:1.75;color:rgba(245,242,236,.8)}
 .about-body p+p{margin-top:1.25rem}
 .about-body strong{color:var(--paper);font-weight:500}
@@ -77,14 +77,15 @@ section{padding:6rem 2.5rem}
 .about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.5rem}
 .tag{padding:.4rem 1rem;border:1px solid rgba(245,242,236,.2);border-radius:100px;font-size:.8rem;color:rgba(245,242,236,.7)}
 #impact{background:var(--paper)}
-.metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5px;background:var(--border);margin-top:3rem;border:1.5px solid var(--border);border-radius:12px;overflow:hidden}
+.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);margin-top:2.5rem;border:1.5px solid var(--border);border-radius:12px;overflow:hidden}
+@media(max-width:1000px) and (min-width:769px){.metrics-grid{grid-template-columns:repeat(2,1fr)}}
 .metric-cell{background:var(--paper);padding:2rem 1.5rem;transition:background .2s}
 .metric-cell:hover{background:var(--ink)}
 .metric-cell:hover .metric-num{color:var(--accent)}
 .metric-cell:hover .metric-label{color:rgba(245,242,236,.7)}
 .metric-num{font-family:'Syne',sans-serif;font-size:clamp(.9rem,2vw,2.2rem);font-weight:800;line-height:1;color:var(--ink);transition:color .2s;white-space:nowrap}
 .metric-label{font-size:.8rem;line-height:1.4;color:#666;margin-top:.5rem;transition:color .2s}
-.focus-areas{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.focus-areas{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
 .focus-card{background:var(--card-bg);border-radius:16px;padding:2rem;border:1px solid var(--border);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
 .focus-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.1)}
 .focus-card-accent{position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent)}
@@ -97,7 +98,7 @@ section{padding:6rem 2.5rem}
 #work .section-label{color:var(--accent)}
 #work .section-label::before{background:var(--accent)}
 .work-intro{font-size:1.1rem;line-height:1.7;color:rgba(245,242,236,.7);max-width:600px;margin-top:1rem;font-style:italic}
-.work-categories{margin-top:4rem}
+.work-categories{margin-top:2.5rem}
 .work-category{margin-bottom:3rem}
 .work-category-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(245,242,236,.4);margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(245,242,236,.1)}
 .work-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
@@ -112,7 +113,7 @@ section{padding:6rem 2.5rem}
 .work-card:hover .work-card-link{opacity:1}
 #reviews{background:var(--paper)}
 .reviews-intro{font-size:1.1rem;color:#666;max-width:500px;margin-top:.5rem}
-.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-top:3.5rem}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-top:2.5rem}
 .review-card{background:var(--card-bg);border-radius:16px;padding:2rem;border:1px solid var(--border);transition:transform .3s,box-shadow .3s}
 .review-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.08)}
 .review-quote{font-size:.95rem;line-height:1.7;color:#333;margin-bottom:1.5rem}
@@ -348,17 +349,17 @@ section{padding:6rem 2.5rem}
   />
   <div class="hero-photo-overlay"></div>
 
-  <p class="hero-eyebrow">Strategic Partnerships & Sales</p>
+  <p class="hero-eyebrow">Brett Zallek</p>
   <h1 class="hero-headline">I build<br><em>partnerships</em><br>that grow revenue.</h1>
-  <p class="hero-sub">Six years turning cold conversations into long-term partners. I've built sponsorship programs and sales motions from zero and closed deals with organizations like Mercedes F1 Team and Sony.</p>
+  <p class="hero-sub">Senior Sales and Partnerships Executive with a proven track record of driving revenue through data-driven strategies. Experienced in entering new markets, building partnership programs from the ground up, and translating analytics into action.</p>
   <div class="hero-ctas">
     <a href="#" onclick="scrollToSection('work');return false;" class="btn-primary" style="text-decoration:none">See the work</a>
   </div>
 
   <div class="hero-stats-row">
-    <div class="hero-stat"><div class="hero-stat-num">$2M+</div><div class="hero-stat-label">Revenue Closed</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">171%</div><div class="hero-stat-label">Quota Attainment, 2022</div></div>
     <div class="hero-stat"><div class="hero-stat-num">6+</div><div class="hero-stat-label">Years in Sales & Partnerships</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">$945K</div><div class="hero-stat-label">Net-New Revenue Closed, 3 Years</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">138%</div><div class="hero-stat-label">Avg. Quota Attainment</div></div>
   </div>
 
 </section>
@@ -434,15 +435,15 @@ section{padding:6rem 2.5rem}
   <h2 class="section-title reveal">Numbers that tell the story.</h2>
 
   <div class="metrics-grid reveal">
-    <div class="metric-cell"><div class="metric-num">$2M+</div><div class="metric-label">Revenue closed across esports & motorsports clients</div></div>
-    <div class="metric-cell"><div class="metric-num">171%</div><div class="metric-label">Quota attainment, 2022</div></div>
-    <div class="metric-cell"><div class="metric-num">118%</div><div class="metric-label">Quota attainment, 2023</div></div>
-    <div class="metric-cell"><div class="metric-num">$945K</div><div class="metric-label">Net-new business closed over 3 years</div></div>
-    <div class="metric-cell"><div class="metric-num">$730K</div><div class="metric-label">Renewal revenue managed over 3 years</div></div>
+    <div class="metric-cell"><div class="metric-num">$2.4M+</div><div class="metric-label">Total revenue closed across career</div></div>
+    <div class="metric-cell"><div class="metric-num">$945K</div><div class="metric-label">Net-new business closed over 3 years, Blinkfire</div></div>
+    <div class="metric-cell"><div class="metric-num">$430K</div><div class="metric-label">Net-new revenue closed, Stream Hatchet</div></div>
+    <div class="metric-cell"><div class="metric-num">171% / 118%</div><div class="metric-label">Quota attainment, 2022 / 2023</div></div>
+    <div class="metric-cell"><div class="metric-num">90%+</div><div class="metric-label">Renewal rate maintained, Blinkfire</div></div>
     <div class="metric-cell"><div class="metric-num">1 → 11</div><div class="metric-label">Customers grown for Blinklet as sole seller</div></div>
-    <div class="metric-cell"><div class="metric-num">$25K</div><div class="metric-label">Average deal size, Blinkfire Analytics</div></div>
-    <div class="metric-cell"><div class="metric-num">$44K</div><div class="metric-label">Average deal size, Stream Hatchet</div></div>
+    <div class="metric-cell"><div class="metric-num">$60K</div><div class="metric-label">Largest consulting deal closed, Sony</div></div>
     <div class="metric-cell"><div class="metric-num">#7</div><div class="metric-label">Employee hire building Version1's sponsorship program</div></div>
+    <div class="metric-cell"><div class="metric-num">10</div><div class="metric-label">Team partners managed as primary contact, Version1</div></div>
   </div>
 
   <div class="focus-areas">
@@ -459,7 +460,7 @@ section{padding:6rem 2.5rem}
     </div>
     <div class="focus-card reveal">
       <div class="focus-card-accent" style="background:#1a3a5c"></div>
-      <div class="focus-years" style="color:#1a3a5c">3</div>
+      <div class="focus-years" style="color:#1a3a5c">3+</div>
       <div class="focus-title">Program & Product Building</div>
       <ul class="focus-list">
         <li>Grew Blinklet from 1 to 11 customers, sole seller</li>
@@ -474,6 +475,7 @@ section{padding:6rem 2.5rem}
       <div class="focus-title">Writing & Communication</div>
       <ul class="focus-list">
         <li>Sports & Managing Editor, The Record (St. John's University)</li>
+        <li>ACP Best of Midwest 2019 — 1st & 5th, Best Sports Story; 7th, Best Single Page Design</li>
         <li>Freelance Writer, Mankato Area Foundation</li>
         <li>Athlete Correspondent, UNRL</li>
         <li>Summa Cum Laude, Global Business Leadership + Communication</li>
@@ -560,6 +562,7 @@ section{padding:6rem 2.5rem}
         <div>
           <div class="review-name">Jenna Johnson</div>
           <div class="review-title">Director of Corporate Partnerships · Chicago Fire FC</div>
+          <a href="https://www.linkedin.com/in/jenna-b-johnson/" target="_blank" class="review-linkedin"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
         </div>
       </div>
     </div>
@@ -571,6 +574,7 @@ section{padding:6rem 2.5rem}
         <div>
           <div class="review-name">Daniel Roca</div>
           <div class="review-title">Chief Revenue Officer · Blinkfire Analytics</div>
+          <a href="https://www.linkedin.com/in/daniroca7/" target="_blank" class="review-linkedin"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
         </div>
       </div>
     </div>
@@ -582,6 +586,7 @@ section{padding:6rem 2.5rem}
         <div>
           <div class="review-name">Grant Parsons</div>
           <div class="review-title">Senior Manager, Brand Partnerships · WIT</div>
+          <a href="https://www.linkedin.com/in/grantcparsons/" target="_blank" class="review-linkedin"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
         </div>
       </div>
     </div>
@@ -593,6 +598,7 @@ section{padding:6rem 2.5rem}
         <div>
           <div class="review-name">Cláudio Gonçalves</div>
           <div class="review-title">Customer Success Manager · Blinkfire Analytics</div>
+          <a href="https://www.linkedin.com/in/cmstgoncalves/" target="_blank" class="review-linkedin"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
         </div>
       </div>
     </div>
@@ -604,6 +610,7 @@ section{padding:6rem 2.5rem}
         <div>
           <div class="review-name">Mark Redgrave</div>
           <div class="review-title">Product Marketing Manager · King</div>
+          <a href="https://www.linkedin.com/in/markredgrave/" target="_blank" class="review-linkedin"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
         </div>
       </div>
     </div>
@@ -615,6 +622,7 @@ section{padding:6rem 2.5rem}
         <div>
           <div class="review-name">Daniel Robertson</div>
           <div class="review-title">Director of Customer Success · Blinkfire Analytics</div>
+          <a href="https://www.linkedin.com/in/danielrobertson27/" target="_blank" class="review-linkedin"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
         </div>
       </div>
     </div>
@@ -626,6 +634,7 @@ section{padding:6rem 2.5rem}
         <div>
           <div class="review-name">Michael Levine</div>
           <div class="review-title">Director of Corporate Partnerships · Playfly Sports</div>
+          <a href="https://www.linkedin.com/in/michaellevinepartnerships/" target="_blank" class="review-linkedin"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
         </div>
       </div>
     </div>
@@ -637,6 +646,7 @@ section{padding:6rem 2.5rem}
         <div>
           <div class="review-name">Tyler Birschbach</div>
           <div class="review-title">Founding Marketing Lead · BettorEdge</div>
+          <a href="https://www.linkedin.com/in/tylerbirschbach/" target="_blank" class="review-linkedin"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
         </div>
       </div>
     </div>
