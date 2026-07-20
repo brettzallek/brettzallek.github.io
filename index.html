@@ -74,6 +74,14 @@ section{padding:4.25rem 2.5rem}
 .about-photos{display:flex;flex-direction:column;gap:1rem}
 .about-photos img{width:100%;border-radius:8px;object-fit:cover;object-position:center 15%;display:block;filter:grayscale(20%);transition:filter .3s;max-height:380px}
 .about-photos img:hover{filter:none}
+#timeline{background:var(--ink);color:var(--paper);padding-top:0}
+.timeline-wrap{position:relative;display:flex;justify-content:space-between;align-items:flex-start;margin-top:3rem;padding:0 1rem}
+.timeline-wrap::before{content:'';position:absolute;top:5px;left:5%;right:5%;height:1.5px;background:rgba(245,242,236,.15)}
+.timeline-item{position:relative;display:flex;flex-direction:column;align-items:center;width:22%;text-align:center}
+.timeline-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.timeline-year{margin-top:12px;font-size:.75rem;color:var(--accent);font-weight:500;letter-spacing:.02em}
+.timeline-company{margin-top:2px;font-size:.9rem;color:var(--paper);font-weight:500}
+.timeline-role{font-size:.75rem;color:rgba(245,242,236,.5);margin-top:2px}
 .about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.5rem}
 .tag{padding:.4rem 1rem;border:1px solid rgba(245,242,236,.2);border-radius:100px;font-size:.8rem;color:rgba(245,242,236,.7)}
 #impact{background:var(--paper)}
@@ -246,6 +254,16 @@ section{padding:4.25rem 2.5rem}
   .about-grid{grid-template-columns:1fr;gap:2rem}
   .about-body{font-size:1rem}
   .about-photos img{max-height:280px}
+
+  /* TIMELINE */
+  .timeline-wrap{flex-direction:column;gap:0;padding:0;margin-top:2rem}
+  .timeline-wrap::before{display:none}
+  .timeline-item{width:100%;flex-direction:row;align-items:flex-start;text-align:left;gap:1rem;position:relative;padding-bottom:1.75rem}
+  .timeline-item:last-child{padding-bottom:0}
+  .timeline-item:not(:last-child)::after{content:'';position:absolute;left:4px;top:14px;bottom:-14px;width:1.5px;background:rgba(245,242,236,.15)}
+  .timeline-dot{margin-top:4px}
+  .timeline-text{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+  .timeline-year{margin-top:0}
 
   /* CERTS */
   .certs-grid{flex-direction:column}
@@ -427,6 +445,47 @@ section{padding:4.25rem 2.5rem}
     </div>
     <div class="about-photos reveal" style="display:none"><img src="images/headshot-about.JPG" alt="Brett Zallek" /></div>
     </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-label">Career</div>
+  <h2 class="section-title reveal">The path so far.</h2>
+
+  <div class="timeline-wrap reveal">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-text">
+        <div class="timeline-year">2019–2021</div>
+        <div class="timeline-company">Version1 / Røkkr</div>
+        <div class="timeline-role">Partnerships Coordinator</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-text">
+        <div class="timeline-year">2021</div>
+        <div class="timeline-company">Esports Awards</div>
+        <div class="timeline-role">Partnerships Manager</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-text">
+        <div class="timeline-year">2021–2024</div>
+        <div class="timeline-company">Blinkfire Analytics</div>
+        <div class="timeline-role">Account Executive</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-text">
+        <div class="timeline-year">2024–2025</div>
+        <div class="timeline-company">Stream Hatchet</div>
+        <div class="timeline-role">Senior Sales Executive</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- IMPACT -->
